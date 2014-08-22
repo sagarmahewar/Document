@@ -1,0 +1,644 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265
+{\fonttbl\f0\fmodern\fcharset0 Courier;\f1\fswiss\fcharset0 Helvetica;\f2\fswiss\fcharset0 ArialMT;
+\f3\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;\red247\green247\blue247;\red171\green82\blue39;\red59\green0\blue164;
+\red32\green0\blue99;\red0\green0\blue233;\red109\green109\blue109;\red31\green31\blue31;\red80\green80\blue80;
+\red233\green233\blue233;\red173\green173\blue173;\red12\green96\blue140;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+{\info
+{\keywords cursorLocation=296}}\paperw11900\paperh16840\margl1008\margr1008\margt1008\vieww25400\viewh13420\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs24 \cf0 Internet protocol suite\
+\
+Application layer\
+DHCP DHCPv6 DNS FTP HTTP IMAP IRC LDAP MGCP NNTP BGP NTP POP RPC RTP RTSP RIP SIP SMTP SNMP SOCKS SSH Telnet TLS/SSL XMPP more...\
+\
+Transport layer\
+TCP UDP DCCP SCTP RSVP more...\
+\
+Internet layer\
+IP IPv4 IPv6 ICMP ICMPv6 ECN IGMP IPsec more...\
+\
+Link layer\
+ARP/InARP NDP OSPF Tunnels L2TP PTPP Media access control Ethernet DSL ISDN FDDI DOCSIS\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f1 \cf0 {{\NeXTGraphic File-IP_stack_connections.svg.png \width7000 \height8280
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0 \cf0 \
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f1 \cf0 {{\NeXTGraphic File-UDP_encapsulation.svg.png \width7000 \height4380
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0 \cf0 \
+\
+\pard\pardeftab720
+
+\f1\fs22 \cf0 \cb2 Encapsulation of application data descending through the layers described in {\field{\*\fldinst{HYPERLINK "http://tools.ietf.org/html/rfc1122"}}{\fldrslt \cf3 RFC 1122}}\cf3 \
+\
+\
+
+\b \cf4 Difference Between TCP & UDP
+\b0 \cf3 \
+\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth11520\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f2\b\fs28 \cf1 \cb1 Comparis\cf5 on chart\
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth4260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth5740\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+
+\fs26 \cf5 \nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 TCP\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 UDP\nestcell \nestrow
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth4260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth5740\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+\cf5 Acronym for:\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 Transmission Control Protocol\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 User Datagram Protocol or Universal Datagram Protocol\nestcell \nestrow
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth4260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth5740\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+\cf5 Function:\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 As a message makes its way across the internet from one computer to another. This is connection based.\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 UDP is also a protocol used in message transport or transfer. This is not connection based which means that one program can send a load of packets to another and that would be the end of the relationship.\nestcell \nestrow
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth4260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth5740\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+\cf5 Usage:\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 TCP is used in case of non-time critical applications.\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 UDP is used for games or applications that require fast transmission of data. UDP's stateless nature is also useful for servers that answer small queries from huge numbers of clients.\nestcell \nestrow
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth4260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth5740\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+\cf5 Examples:\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 HTTP, HTTPs, FTP, SMTP Telnet etc...\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 DNS, DHCP, TFTP, SNMP, RIP, VOIP etc...\nestcell \nestrow
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth4260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth5740\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+\cf5 Ordering of data packets:\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 TCP rearranges data packets in the order specified.\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 UDP has no inherent order as all packets are independent of each other. If ordering is required, it has to be managed by the application layer.\nestcell \nestrow
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth4260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth5740\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+\cf5 Speed of transfer:\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 The speed for TCP is slower than UDP.\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 UDP is faster because there is no error-checking for packets.\nestcell \nestrow
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth4260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth5740\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+\cf5 Reliability:\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 There is absolute guarantee that the data transferred remains intact and arrives in the same order in which it was sent.\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 There is no guarantee that the messages or packets sent would reach at all.\nestcell \nestrow
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth4260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth5740\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+\cf5 Header Size:\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 TCP header size is 20 bytes\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 UDP Header size is 8 bytes.\nestcell \nestrow
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth4260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth5740\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+\cf5 Streaming of data:\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 Data is read as a byte stream, no distinguishing indications are transmitted to signal message (segment) boundaries.\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 Packets are sent individually and are checked for integrity only if they arrive. Packets have definite boundaries which are honored upon receipt, meaning a read operation at the receiver socket will yield an entire message as it was originally sent.\nestcell \nestrow
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth4260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth5740\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+\cf5 Weight:\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 TCP requires three packets to set up a socket connection, before any user data can be sent. TCP handles reliability and congestion control.\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 UDP is lightweight. There is no ordering of messages, no tracking connections, etc. It is a small transport layer designed on top of IP.\nestcell \nestrow
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth4260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth5740\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+\cf5 Data Flow Control:\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 TCP does Flow Control. TCP requires three packets to set up a socket connection, before any user data can be sent. TCP handles reliability and congestion control.\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 UDP does not have an option for flow control\nestcell \nestrow
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth4260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth5740\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+\cf5 Error Checking:\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 TCP does error checking\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 UDP does error checking, but no recovery options.\nestcell \nestrow
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth4260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth5740\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+\cf5 Fields:\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 1. Sequence Number, 2. AcK number, 3. Data offset, 4. Reserved, 5. Control bit, 6. Window, 7, Urgent Pointer 8. Options, 9. Padding, 10.Check Sum, 11. Source port, 12. Destination port\nestcell 
+\pard\intbl\itap2\pardeftab720
+\cf5 1. Length, 2. Source port, 3. Destination port, \cf1 4.Check Sum\nestcell \lastrow\nestrow\cell \lastrow\row
+\pard\pardeftab720
+
+\f1\b0\fs22 \cf3 \cb2 \
+\
+\pard\pardeftab720\sa320\qc
+{\field{\*\fldinst{HYPERLINK "http://www.vlsm-calc.net/"}}{\fldrslt 
+\f2\fs32 \cf6 \cb1 \ul \ulc6 << Back}}
+\f2\fs32 \cf0 \cb1 \
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrs\brdrw20\brdrcf7 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth960\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth1800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1600\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth2580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth14460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+
+\b \cf0 Layer #\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Name\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Mnemonic\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Encapsulation Units\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Devices or Components\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Keywords/Description\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth960\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth1800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1600\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth2580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth14460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+
+\b0 \cf0 7\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Application\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 All\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 data\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 PC\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Network services for application processes, such as file, print, messaging, database services\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth960\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth1800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1600\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth2580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth14460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 6\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Presentation\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 People\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 data\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 \'a0\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Standard interface to data for the application layer. MIME encoding, data encryption, conversion, formatting, compression\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth960\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth1800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1600\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth2580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth14460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 5\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Session\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Seem\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 data\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 \'a0\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Interhost communication. Establishes, manages and terminates connection between applications\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth960\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth1800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1600\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth2580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth14460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 4\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Transport\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 To\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 segments\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 \'a0\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 End-to-end connections and reliability. Segmentation/desegmentation of data in proper sequence. Flow control\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth960\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth1800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1600\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth2580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth14460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 3\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Network\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Need\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 packets\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 router\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Logical addressing and path determination. Routing. Reporting delivery errors\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth960\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth1800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1600\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth2580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth14460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 2\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Data Link\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Data\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 frames\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 bridge, switch, NIC\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Physical addressing and access to media. Two sublayers: Logical Link Control (LLC) and Media Access Control (MAC)\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrb\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth960\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth1800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1600\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth2580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth14460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 1\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Physical\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Processing\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 bits\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 repeater, hub, transciever\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Binary transmission signals and encoding. Layout of pins, voltages, cable specifications, modulation\cell \lastrow\row
+\pard\pardeftab720\sa398\qc
+
+\b\fs48 \cf0 \
+OSI comparision with TCP/IP Protocol Stack\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trmarl3280 \trmarr3280 \trbrdrt\brdrs\brdrw20\brdrcf7 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1300\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth2940\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth7320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+
+\fs32 \cf0 OSI #\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 OSI Layer Name\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 TCP/IP #\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 TCP/IP Layer Name\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Encapsulation Units\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 TCP/IP Protocols\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trmarl3280 \trmarr3280 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvmgf \clvertalc \clshdrawnil \clwWidth1300\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvmgf \clvertalc \clshdrawnil \clwWidth2940\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth7320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+
+\b0 \cf0 7\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Application\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 4\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Application\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 data\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 FTP, HTTP, POP3, IMAP, telnet, SMTP, DNS, TFTP\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trmarl3280 \trmarr3280 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvmrg \clvertalc \clshdrawnil \clwWidth1300\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvmrg \clvertalc \clshdrawnil \clwWidth2940\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth7320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 6\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Presentation\cell 
+\pard\intbl\itap1\cell 
+\pard\intbl\itap1\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 data\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 \'a0\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trmarl3280 \trmarr3280 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvmrg \clvertalc \clshdrawnil \clwWidth1300\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvmrg \clvertalc \clshdrawnil \clwWidth2940\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth7320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 5\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Session\cell 
+\pard\intbl\itap1\cell 
+\pard\intbl\itap1\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 data\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 \'a0\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trmarl3280 \trmarr3280 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1300\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth2940\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth7320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 4\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Transport\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 3\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Transport\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 segments\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 TCP, UDP\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trmarl3280 \trmarr3280 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1300\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth2940\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth7320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 3\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Network\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 2\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Internet\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 packets\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 IP\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trmarl3280 \trmarr3280 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvmgf \clvertalc \clshdrawnil \clwWidth1300\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvmgf \clvertalc \clshdrawnil \clwWidth2940\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth7320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 2\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Data Link\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 1\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Network Access\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 frames\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 \'a0\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trmarl3280 \trmarr3280 \trbrdrl\brdrs\brdrw20\brdrcf7 \trbrdrb\brdrs\brdrw20\brdrcf7 \trbrdrr\brdrs\brdrw20\brdrcf7 
+\clvertalc \clshdrawnil \clwWidth820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1440
+\clvertalc \clshdrawnil \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx2880
+\clvmrg \clvertalc \clshdrawnil \clwWidth1300\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvmrg \clvertalc \clshdrawnil \clwWidth2940\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx7200
+\clvertalc \clshdrawnil \clwWidth7320\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf7 \clbrdrl\brdrs\brdrw20\brdrcf7 \clbrdrb\brdrs\brdrw20\brdrcf7 \clbrdrr\brdrs\brdrw20\brdrcf7 \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 1\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 Physical\cell 
+\pard\intbl\itap1\cell 
+\pard\intbl\itap1\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 bits\cell 
+\pard\intbl\itap1\pardeftab720\qc
+\cf0 \'a0\cell \lastrow\row
+\pard\pardeftab720\qc
+
+\fs20 \cf0 Hosted at {\field{\*\fldinst{HYPERLINK "http://www.novsu.ru/"}}{\fldrslt \cf6 \ul \ulc6 Novgorod State University}}
+\f1\fs22 \cf3 \cb2 \
+\pard\pardeftab720
+\cf3 \
+
+\f0\fs24 \cf0 \cb1 \
+\
+\
+\
+\pard\pardeftab720
+
+\f3\fs44 \cf8 The TCP/IP model\
+\
+\pard\pardeftab720
+
+\fs26 \cf8 TCP/IP is based on a four-layer reference model. All protocols that belong to the TCP/IP protocol suite are located in the top three layers of this model.\
+As shown in the following illustration, each layer of the TCP/IP model corresponds to one or more layers of the seven-layer Open Systems Interconnection (OSI) reference model proposed by the International Standards Organization (ISO).\
+\
+
+\f1\fs24 \cf0 {{\NeXTGraphic IC197700.gif \width7960 \height4280 \noorient
+}¬}
+\f3\fs26 \cf8 \
+\
+The types of services performed and protocols used at each layer within the TCP/IP model are described in more detail in the following table.\
+\pard\pardeftab720
+
+\fs36 \cf8 \'a0\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrs\brdrw20\brdrcf11 \trbrdrl\brdrs\brdrw20\brdrcf11 \trbrdrr\brdrs\brdrw20\brdrcf11 
+\clvertalc \clcbpat10 \clwWidth1440\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx2880
+\clvertalc \clcbpat10 \clwWidth12480\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx5760
+\clvertalc \clcbpat10 \clwWidth4140\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\b\fs26 \cf9 Layer\cell 
+\pard\intbl\itap1\pardeftab720
+\cf9 Description\cell 
+\pard\intbl\itap1\pardeftab720
+\cf9 Protocols\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf11 \trbrdrr\brdrs\brdrw20\brdrcf11 
+\clvertalt \clshdrawnil \clwWidth1440\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth12480\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth4140\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\b0 \cf8 Application\cell 
+\pard\intbl\itap1\pardeftab720
+\cf8 Defines TCP/IP application protocols and how host programs interface with transport layer services to use the network.\cell 
+\pard\intbl\itap1\pardeftab720
+\cf8 HTTP, Telnet, FTP, TFTP, SNMP, DNS, SMTP, X\'a0Windows, other application protocols\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf11 \trbrdrr\brdrs\brdrw20\brdrcf11 
+\clvertalt \clshdrawnil \clwWidth1440\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth12480\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth4140\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+\cf8 Transport\cell 
+\pard\intbl\itap1\pardeftab720
+\cf8 Provides communication session management between host computers. Defines the level of service and status of the connection used when transporting data.\cell 
+\pard\intbl\itap1\pardeftab720
+\cf8 TCP, UDP, RTP\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf11 \trbrdrr\brdrs\brdrw20\brdrcf11 
+\clvertalt \clshdrawnil \clwWidth1440\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth12480\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth4140\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+\cf8 Internet\cell 
+\pard\intbl\itap1\pardeftab720
+\cf8 Packages data into IP datagrams, which contain source and destination address information that is used to forward the datagrams between hosts and across networks. Performs routing of IP datagrams.\cell 
+\pard\intbl\itap1\pardeftab720
+\cf8 IP, ICMP, ARP, RARP\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf11 \trbrdrb\brdrs\brdrw20\brdrcf11 \trbrdrr\brdrs\brdrw20\brdrcf11 
+\clvertalt \clshdrawnil \clwWidth1440\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth12480\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth4140\clftsWidth3 \clmart200 \clmarl200 \clmarb200 \clmarr200 \clbrdrt\brdrs\brdrw20\brdrcf11 \clbrdrl\brdrs\brdrw20\brdrcf11 \clbrdrb\brdrs\brdrw20\brdrcf11 \clbrdrr\brdrs\brdrw20\brdrcf11 \clpadt200 \clpadl160 \clpadb200 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+\cf8 Network interface\cell 
+\pard\intbl\itap1\pardeftab720
+\cf8 Specifies details of how data is physically sent through the network, including how bits are electrically signaled by hardware devices that interface directly with a network medium, such as coaxial cable, optical fiber, or twisted-pair copper wire.\cell 
+\pard\intbl\itap1\pardeftab720
+\cf8 Ethernet, Token Ring, FDDI, X.25, Frame Relay, RS-232, v.35\cell \lastrow\row
+\pard\pardeftab720
+\cf8 For more information about ARP, IP, ICMP, IGMP, UDP, and TCP, see {\field{\*\fldinst{HYPERLINK "http://technet.microsoft.com/en-us/library/cc784576(v=ws.10).aspx"}}{\fldrslt \cf12 Understanding TCP/IP}}.\
+\pard\pardeftab720
+
+\b \cf8 Note
+\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls1\ilvl0\cf8 {\listtext	\'95	}The OSI reference model is not specific to TCP/IP. It was developed by the ISO in the late 1970s as a framework for describing all functions required of an open interconnected network. It is a widely known and accepted reference model in the data communications field and is used here only for comparison purposes.\uc0\u8232 \
+\pard\pardeftab720
+
+\f0\fs24 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \
+}

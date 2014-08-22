@@ -1,0 +1,659 @@
+﻿Creational
+- Factory Method
+- Singleton 
+
+
+Structural
+- Adaptor
+- Decorator
+- Composite
+- Proxy
+
+
+Behavioural
+- Iterator
+- Template Method
+
+
+Composite - Composite can be used when clients should ignore the difference between compositions of objects and individual objects.[1] If programmers find that they are using multiple objects in the same way, and often have nearly identical code to handle each of them, then composite is a good choice; it is less complex in this situation to treat primitives and composites as homogeneous.
+
+Template Method
+Abstract Factory
+Singleton (much hated, but everywhere)
+Visitor
+Builder
+
+Proxy
+
+
+
+Patterns by Type
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Creational[edit]
+
+
+
+Creational patterns are ones that create objects for you, rather than having you instantiate objects directly. This gives your program more flexibility in deciding which objects need to be created for a given case.
+
+
+
+- Abstract Factory groups object factories that have a common theme.
+
+
+
+- Builder constructs complex objects by separating construction and representation.
+
+
+
+- Factory Method : creates objects without specifying the exact class to create.
+
+"Define an interface for creating an object, but let the classes that implement the interface decide which class to instantiate. The Factory method lets a class defer instantiation to subclasses."
+Also known as Virtual Constructor.
+it defines an interface for creating an object, but leaves the choice of its type to the subclasses, creation being deferred at run-time. 
+
+A simple real life example of the Factory Method is the hotel. When staying in a hotel you first have to check in. The person working at the front desk will give you a key to your room after you've paid for the room you want and this way he can be looked at as a �room� factory. While staying at the hotel, you might need to make a phone call, so you call the front desk and the person there will connect you with the number you need, becoming a �phone-call� factory, because he controls the access to calls, too.
+
+
+
+interface IIceCream
+
+{
+    
+	string Functionality();
+
+}
+
+
+class ChocolateIceCream : IIceCream
+
+{
+    
+	public string Functionality()
+    
+	{
+        
+		return "Chocolate Ice cream";
+    
+	}
+
+}
+
+
+class VanillaIceCream : IIceCream
+
+{
+	public string Functionality()
+    
+	{
+        
+		return "Vanilla Ice cream";
+    
+	}
+
+}
+
+
+class StrawberryIceCream : IIceCream
+
+{
+    
+	public string Functionality()
+    
+	{
+        
+		return "Strawberry Ice cream";
+    
+	}
+
+} 
+
+
+
+static class Factory
+
+{
+   
+	/// <summary>
+   
+	/// This is the Factory method
+   
+	/// </summary>
+   public static IIceCream Get(int id)
+   
+	{
+       
+		switch (id)
+       
+		{
+           
+			case 0:
+                
+				return new ChocolateIceCream();
+           
+			case 1:
+                
+				return new VanillaIceCream();
+           
+			case 2:
+                
+				return new StrawberryIceCream();
+           
+			default:
+                
+				return null;
+        
+		}
+   
+	}
+
+} 
+
+/// <summary>
+
+
+/// This is the Client
+
+/// </summary>
+
+
+static void Main()
+
+{
+   
+	for (int i = 0; i <= 3; i++)
+   
+	{
+       
+		var type = Factory.Get(i);
+       
+		if (type != null)
+       
+		{
+           
+			Console.WriteLine("This is Product : " + type.Functionality());
+       
+		}
+   
+	}
+
+} 
+
+
+
+
+- Prototype creates objects by cloning an existing object.
+
+
+
+- Singleton restricts object creation for a class to only one instance.
+
+Object Pool 
+ 
+
+- Object pooling can offer a significant performance boost; it is most effective in situations where the cost of initializing a class instance is high, the rate of instantiation of     a class is high, and the number of instantiations in use at any one time is low.
+ 
+
+- Object pools (otherwise known as resource pools) are used to manage the object caching. A client with access to a Object pool can avoid creating a new Objects by simply asking the pool for one that has already been instantiated instead. Generally the pool will be a growing pool, i.e. the pool itself will create new objects if the pool is empty, or we can have a pool, which restricts the number of objects created.
+ 
+
+- Rules of thumb
+   
+
+1] The Factory Method pattern can be used to encapsulate the creation logic for objects. However, it does not manage them after their creation, the object pool pattern keeps track  of the objects it creates.
+   
+
+2] Object Pools are usually implemented as Singletons
+  
+
+
+
+——————————————————————————————————————————
+
+
+
+
+Structural[edit]
+
+
+
+These concern class and object composition. They use inheritance to compose interfaces and define ways to compose objects to obtain new functionality.
+
+
+
+Adapter : 
+ 
+
+- Allows classes with incompatible interfaces to work together by wrapping its own interface around that of an already existing class.
+ 
+- COM Aggregation is best example of ADAPTER design Pattern.
+ 
+- Adapter is about creating an intermediary abstraction that translates, or maps, the old component to the new system. Clients call methods on the Adapter object which redirects them into calls to the legacy component. This strategy can be implemented either with inheritance or with aggregation.
+ 
+- The Adapter pattern allows otherwise incompatible classes to work together by converting the interface of one class into an interface expected by the clients. 
+
+
+Bridge decouples an abstraction from its implementation so that the two can vary independently.
+
+
+
+
+
+
+
+Composite :
+
+
+
+-composes zero-or-more similar objects so that they can be manipulated as one object.
+  
+-Compose objects into tree structures to represent whole-part hierarchies. 
+ 
+-Directories contain entries, each of which could be a directory.
+  
+-Menus that contain menu items, each of which could be a menu.
+  
+-Composite doesn’t force you to treat all Components as Composites. It merely tells you to put all operations that you want to treat “uniformly” in the Component class. If             	add,remove, and similar operations cannot, or must not, be treated uniformly, then do not put them in the Component base class.
+
+Problem 
+-
+Application needs to manipulate a hierarchical collection of “primitive” and “composite” objects. Processing of a primitive object is handled one way, and processing of a composite object is handled differently. Having to query the “type” of each object before attempting to process it is not desirable.
+
+Example 
+
+-
+
+#include <iostream>
+
+#include <vector>
+
+using namespace std;
+
+// 2. Create an "interface" (lowest common denominator)
+
+
+class Component
+
+{
+  
+	public:
+    
+		virtual void traverse() = 0;
+
+};
+
+
+
+class Leaf: public Component
+
+{
+    
+	// 1. Scalar class   3. "isa" relationship
+    
+	int value;
+  
+	
+public:
+    
+	Leaf(int val)
+    
+	{
+        
+		value = val;
+    
+	}
+    
+	
+	void traverse()
+    
+	{
+        
+		cout << value << ' ';
+    
+	}
+
+};
+
+
+
+class Composite: public Component
+
+
+{
+    // 1. Vector class   3. "isa" relationship
+    
+	
+	vector < Component * > children; 	// 4. "container" coupled to the interface
+  
+
+public:
+    // 4. "container" class coupled to the interface
+    
+	
+	void add(Component *ele)
+    
+	{
+        
+		children.push_back(ele);
+    
+	}
+    
+
+	void traverse()
+    
+	{
+        
+		for (int i = 0; i < children.size(); i++)
+        // 5. Use polymorphism to delegate to children
+          
+			children[i]->traverse();
+    
+	}
+
+};
+
+
+
+int main()
+
+{
+  
+	Composite containers[4];
+
+  
+	for (int i = 0; i < 4; i++)
+    
+		for (int j = 0; j < 3; j++)
+      
+			containers[i].add(new Leaf(i *3+j));
+
+  
+		for (i = 1; i < 4; i++)
+    
+			containers[0].add(&(containers[i]));
+
+  
+		for (i = 0; i < 4; i++)
+  
+		{
+    
+			containers[i].traverse();
+    
+			cout << endl;
+  
+		}
+
+}
+
+
+
+Output
+
+
+0 1 2 3 4 5 6 7 8 9 10 11
+3 4 5
+6 7 8
+9 10 11
+
+
+
+
+
+
+Decorator :
+
+Decorator dynamically adds/overrides behaviour in an existing method of an object.
+ 
+- Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
+ 
+- Wrapping a gift, putting it in a box, and wrapping the box.
+ 
+- Problem : You want to add behavior or state to individual objects at run-time. Inheritance is not feasible because it is static and applies to an entire class.
+ 
+
+- Example :
+   
+Widget* aWidget = new BorderDecorator(
+     new HorizontalScrollBarDecorator(
+     new VerticalScrollBarDecorator(
+     new Window( 80, 24 ))));
+   
+aWidget->draw();
+
+
+
+- Facade provides a simplified interface to a large body of code.
+
+
+
+- Flyweight reduces the cost of creating and manipulating a large number of similar objects.
+
+
+
+- Proxy provides a placeholder for another object to control access, reduce cost, and reduce complexity.
+
+
+
+——————————————————————————————————————————
+
+
+
+Behavioral[edit]
+
+Most of these design patterns are specifically concerned with communication between objects.
+
+
+
+- Chain of responsibility delegates commands to a chain of processing objects.
+
+
+
+- Command creates objects which encapsulate actions and parameters.
+
+
+
+- Interpreter implements a specialized language.
+
+
+
+- Iterator accesses the elements of an object sequentially without exposing its underlying representation.
+
+
+
+- Mediator allows loose coupling between classes by being the only class that has detailed knowledge of their methods.
+
+
+
+- Memento provides the ability to restore an object to its previous state (undo).
+
+
+
+- Observer is a publish/subscribe pattern which allows a number of observer objects to see an event.
+
+
+
+- State allows an object to alter its behavior when its internal state changes.
+
+
+
+- Strategy allows one of a family of algorithms to be selected on-the-fly at runtime.
+
+
+
+- Template method : 
+
+ Defines the skeleton of an algorithm as an abstract class, allowing its subclasses to provide concrete behavior.
+  
+
+-Abstract class is best example of template method. 
+  
+-By defining a skeleton of an algorithm in an operation, deferring some steps to subclasses, the Template Method lets subclasses redefine certain steps of that algorithm without  changing the algorithm's structure.
+  
+-Base class declares algorithm ‘placeholders’, and derived classes implement the placeholders.
+
+Problem 
+-
+
+Two different components have significant similarities, but demonstrate no reuse of common interface or implementation. If a change common to both components becomes necessary, duplicate effort must be expended.
+
+
+
+Example -
+
+
+
+#include <iostream>
+
+using namespace std;
+
+
+class Base
+
+{
+    
+	void a()
+    
+	{
+        
+		cout << "a  ";
+    
+	}
+    
+	void c()
+    
+	{
+       
+		cout << "c  ";
+
+	}
+    
+	void e()
+    
+	{
+        
+		cout << "e  ";
+    
+	}
+    
+	// 2. Steps requiring peculiar implementations are "placeholders" in base class
+    
+
+	virtual void ph1() = 0;
+    	virtual void ph2() = 0;
+  
+
+public:
+    // 1. Standardize the skeleton of an algorithm in a base class "template method"
+    
+	
+	void execute()
+    
+	{
+        
+		a();
+        
+		ph1();
+        
+		c();
+        
+		ph2();
+        
+		e();
+    
+	}
+
+};
+
+
+
+class One: public Base
+
+{
+    	
+	// 3. Derived classes implement placeholder methods
+     /*virtual*/
+	void ph1()
+    
+	{
+        
+		cout << "b  ";
+    
+	}
+     
+
+	/*virtual*/
+	void ph2()
+    
+	{
+        
+		cout << "d  ";
+    
+	}
+
+};
+
+
+
+class Two: public Base
+
+{
+     
+	/*virtual*/
+	void ph1()
+    
+	{
+        
+		cout << "2  ";
+    
+	}
+     
+
+	/*virtual*/
+	void ph2()
+    
+	{
+        
+		cout << "4  ";
+    
+	}
+
+};
+
+
+
+int main()
+
+{
+  
+	Base *array[] = 
+  {
+&One(), &Two()
+  };
+  
+	for (int i = 0; i < 2; i++)
+  
+	{
+    
+		array[i]->execute();
+    
+		cout << '\n';
+  
+	}
+
+}
+
+
+
+Output :
+a  b  c  d  e
+a  2  c  4 
+e
+
+
+
+- Visitor separates an algorithm from an object structure by moving the hierarchy of methods into one object.

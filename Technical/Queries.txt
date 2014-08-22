@@ -1,0 +1,196 @@
+- Find CRASH at relese mode.
+
+
+Crash Analyzer [Finds CRASH on OS level]
+
+By using the Crash Analyzer Wizard, you can quickly determine the cause of an issue by analyzing the memory dump file on the Windows operating system that you are repairing. Based on this information, you can take corrective action. The Crash Analyzer Wizard can eliminate much of the guesswork involved in diagnosing nonresponsive systems.
+
+For example, if the Crash Analyzer Wizard reports that a device driver called MyFault.sys is the cause, as shown in Figure 7, you can disable the device driver by using the Services and Drivers item in Computer Management (see the section “Computer Management”). After discovering and disabling the faulting device driver, you can try to start the repaired Windows operating system.
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+- Conditional Breakpoints.
+
+Create sample code
+1.Start Visual Studio .NET or Visual Studio 2005, and create a new Visual Basic Console Application project named Debug.
+2.Modify the code in Module1.vb as follows:
+
+Module Module1
+
+    Sub Main()
+
+        Dim MyTime As String = TimeString
+        Dim MyGreeting As String
+
+        ' Create a greeting.
+        If CInt(TimeString.Substring(0, 2)) < 12 Then
+            MyGreeting = Reverse("Good Morning")
+        Else
+            MyGreeting = Reverse("Good Afternoon")
+        End If
+
+        ' Display reversed greeting.
+        Console.WriteLine(MyGreeting)
+
+    End Sub
+
+    
+    Function Reverse(ByVal inStr As String) As String
+
+        ' Reverses the characters contained in a string.
+        Dim MyInt As Integer
+        Dim MyStr As String
+
+        For MyInt = (inStr.Length - 1) To 0 Step -1
+            MyStr = MyStr & inStr.Substring(MyInt, 1)
+        Next
+
+        Return MyStr
+
+    End Function
+
+End Module
+					
+ 3.Save the project.
+
+Create an unconditional breakpoint
+1.On the Debug menu, click Windows, and then click Breakpoints.
+2.In the Code view, click in the left margin next to the following line of code. This sets a breakpoint at that statement:
+
+
+If CInt(TimeString.Substring(0, 2)) < 12 Then
+					
+3.On the Debug menu, click Start. This starts the program in debug mode. The program stops when it reaches the breakpoint.
+4.On the Debug menu, click Windows, and then click Locals. This displays the values of the local variables, MyGreeting and MyTime.
+5.On the Debug menu, click Continue (or press F5). This continues program execution following the breakpoint.
+
+
+Create a conditional function breakpoint
+1.In the Breakpoints window, click New to create a new breakpoint.
+2.On the Function tab, type Reverse for Function. Type 1 for Line, type 1 for Character, and then set Language to Basic.
+3.Click Condition and make sure that the Condition check box is selected. Type instr.length > 0 for Condition, make sure that the is true option is selected, and then click OK. 
+4.In the New Breakpoint dialog box, click OK.
+5.On the Debug menu, click Start.
+6.The program stops at the IF statement in the Main method. To continue program execution, click Continue on the Debug menu.
+7.The program stops again at the Reverse function. Continue to run the program.
+
+Create an additional breakpoint
+•To create an additional breakpoint, click in the left margin of the Reverse function next to the following line of code:
+
+MyStr = MyStr & inStr.Substring(MyInt, 1)
+					
+
+HIT Count Change breakpoint properties
+1.To change properties for the new breakpoint, right-click the line of code in the previous step, and then click Breakpoint Properties.
+2.Click Hit Count. 
+3.To set When the breakpoint is hit at a multiple of 2, type 2 in the text field, and then click OK.
+4.In the Breakpoint Properties dialog box, click OK.
+5.On the Debug menu, click Start (or press F5). The program stops at the first breakpoint.
+6.Continue to run the program until the debugging process is complete.
+
+
+
+Disable and clear breakpoints
+1.In the Breakpoints window, double-click the following breakpoint: 
+Module1.vb, line 9 character 1
+ This takes you to the location of the breakpoint in the Code window:
+
+If CInt(TimeString.Substring(0, 2)) < 12 Then
+ 
+					
+2.In the Breakpoints window, clear the check box for this breakpoint. This disables the breakpoint.
+3.In the Breakpoints window, click Disable All Breakpoints, click Enable All Breakpoints, and then click Clear All Breakpoints.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- Use of DUMP files
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+- Can I Debug in release Mode ?
+
+Debugging in Release Mode
+I've heard a myth repeated many times by my fellow VC++ developers. It is that it is not possible to debug in Release Mode. Fortunately, this is a myth. 
+
+Rule 7: When all else fails try debugging in release mode.
+
+It is possible to debug in Release mode. The first step is to turn on symbols: 
+
+- In Project Settings (Alt-F2) under the "C++/C tab" set the category to "General" and change the Debug Info setting to "Program Database". 
+- Under the "Link tab" check the "Generate Debug Info" tab. 
+- Recompile using "Rebuild All"
+- This will allow you to see the symbols in the release version. You might want to also consider the following: 
+
+You may want disable your optimization settings when debugging your release version (though this isn't absolutely necessary). 
+If you have trouble placing breakpoints, the command "__asm {int 3}" will cause your program to stop at that line (be sure to remove these lines from your program when you are done debugging).
+Debugging in release mode has several limitations. 
+
+The most annoying one is that you can't easily see into MFC because you don't have the symbols included for the MFC DLL. 
+You must add symbols to the release versions of all libraries and DLL's you wish to debug in your release application.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Is it safe to delete NULL pointer ?
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Delete performs the check anyway, so checking it on your side adds overhead and looks uglier. A very good practice is setting the pointer to NULL after delete (helps avoiding double deletion and other similar memory corruption problems).
+
+I'd also love if delete by default was setting the parameter to NULL like in 
+
+#define my_delete(x) {delete x; x = NULL;}(I know about R and L values, but wouldn't it be nice?)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Is it safe to delete the same pointer twice? 
+
+No! (Assuming you didn't get that pointer back from new in between.) 
+
+For example, the following is a disaster: 
+
+class Foo { ... };
+
+void yourCode()
+{
+  Foo* p = new Foo();
+  delete p;
+  delete p;  ? disaster!
+  ...
+}
+
+That second delete p line might do some really bad things to you. It might, depending on the phase of the moon, corrupt your heap, crash your program, make arbitrary and bizarre changes to objects that are already out there on the heap, etc. Unfortunately these symptoms can appear and disappear randomly. According to Murphy's law, you'll be hit the hardest at the worst possible moment (when the customer is looking, when a high-value transaction is trying to post, etc.). 
+Note: some runtime systems will protect you from certain very simple cases of double delete. Depending on the details, you might be okay if you happen to be running on one of those systems and if no one ever deploys your code on another system that handles things differently and if you are deleting something that doesn't have a destructor and if you don't do anything significant between the two deletes and if no one ever changes your code to do something significant between the two deletes and if your thread scheduler (over which you likely have no control!) doesn't happen to swap threads between the two deletes and if, and if, and if. So back to Murphy: since it can go wrong, it will, and it will go wrong at the worst possible moment. 
+
+Do NOT email me saying you tested it and it doesn't crash. Get a clue. A non-crash doesn't prove the absence of a bug; it merely fails to prove the presence of a bug. 
+
+Trust me: double-delete is bad, bad, bad. Just say no. 
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Do I need to check for NULL before delete p? 
+
+The C++ language guarantees that delete p will do nothing if p is equal to NULL. Since you might get the test backwards, and since most testing methodologies force you to explicitly test every branch point, you should not put in the redundant if test. 
+
+Wrong: 
+
+if (p != NULL)
+  delete p;
+
+Right: 
+delete p;
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+What are the two steps that happen when I say delete p?
+
+delete p is a two-step process: it calls the destructor, then releases the memory. The code generated for delete p is functionally similar to this (assuming p is of type Fred*): 
+
+// Original code: delete p;
+if (p != NULL) {
+  p->~Fred();
+  operator delete(p);
+}
+
+ 

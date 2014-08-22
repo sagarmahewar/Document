@@ -1,0 +1,92 @@
+Callback functions
+Function Object
+Lambada Expression
+Modern New
+
+-------------------------------------------------------------------------------------------------------------
+
+Following URL
+http://msdn.microsoft.com/en-us/library/3bstk3k5(v=vs.80).aspx
+http://msdn.microsoft.com/en-US/library/xey702bw(v=vs.80).aspx
+
+-------------------------------------------------------------------------------------------------------------
+
+New keyword in Visual Studio
+
+finally
+Yes
+Indicates default exception handlings behavior
+Exception Handling under /clr
+
+for each
+No
+Enumerate elements of a collection.
+for each, in
+
+gcnew
+No
+Allocates types on the garbage-collected heap
+gcnew
+
+initonly
+Yes
+Indicates a member can only be initialized at declaration or in a static constructor
+initonly
+
+literal
+Yes
+Creates a literal variable
+literal (Visual C++)
+
+nullptr
+No
+Indicates that a handle or pointer does not point at an object
+nullptr
+
+-------------------------------------------------------------------------------------------------------------
+
+We can have Main inside main
+
+using namespace System;
+using namespace System::Runtime::InteropServices;
+
+// A delegate type.
+delegate bool CallBack(int hwnd, int lParam);
+
+// Managed type with the method to call.
+ref class EnumReport
+{
+// Report the window handle.
+public:
+    [DllImport("user32")]
+    static int EnumWindows(CallBack^ x, int y);
+    
+    static void Main()
+    {
+        EnumReport^ er = gcnew EnumReport;
+        CallBack^ myCallBack = gcnew CallBack(&EnumReport::Report);
+        EnumWindows(myCallBack, 0);
+    }
+
+    static bool Report(int hwnd, int lParam)
+    {
+       Console::Write(L"Window handle is ");
+       Console::WriteLine(hwnd);
+       return true;
+    }
+};
+
+int main()
+{
+    EnumReport::Main();
+}
+
+
+
+
+
+
+
+
+
+

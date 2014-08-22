@@ -1,0 +1,431 @@
+// Test1.cpp : Defines the entry point for the console application.
+//
+
+#include "stdio.h"
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+using namespace std;
+
+# if Singleton
+
+class Singleton
+{
+    Singleton(){};   // Do not miss {}, will give link error
+    ~Singleton(){if(m_pInstance != NULL) delete m_pInstance};
+    Singleton(const Singleton&){}; // copy constructor is private
+    
+    Singleton& operator=(const Singleton&){}; // assignment operator is private
+    static Singleton* m_pInstance; // Should be static for one instance across objects
+
+public:
+    static Singleton* getInstance(); // SHould be static to access member function without class object
+};
+
+Singleton* Singleton::m_pInstance = NULL; // Should initialize // Dont prefix static specifier
+
+Singleton* Singleton::getInstance() // Dont prefix static specifier
+{
+    if(m_pInstance == NULL)
+    {
+        m_pInstance = new Singleton;
+    }
+    return m_pInstance;
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    cout << "first Instance \n";
+    Singleton* obj = Singleton::getInstance();
+    cout << "first Instance 1 \n";
+    Singleton* obj1 = Singleton::getInstance();
+
+    return 0;
+}
+
+#endif
+
+# if ifElseifElse
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    int testScore;
+    cout << "Enter your test score: ";
+    cin >> testScore;
+    if (testScore >= 90 )
+        cout << "Your grade is an A" << endl;
+    else if (testScore >= 80 )
+        cout << "Your grade is a B" << endl;
+    else if (testScore >= 70 )
+        cout << "Your grade is a C" << endl;
+    else if (testScore >= 60 )
+        cout << "Your grade is a D" << endl;
+    else 
+        cout << "Your grade is an F" << endl;
+    cout << "Prees any key";
+    cin >> testScore;
+
+    std::string str;
+    long long len = str.max_size();
+    cout<<len;
+    cin>>len;
+
+    return 0;
+}
+
+#endif 
+
+# if fact
+
+int factorial(int iNum)
+{
+    int factNum=1;
+    if(iNum >0)
+        factNum = iNum * factorial(iNum-1);
+    return factNum;
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    int iNum, FactNum;
+    cout << " Enter number : ";
+    cin >> iNum;
+    FactNum = factorial(iNum);
+    cout << "Fact is : " << FactNum;
+    return 0;
+}
+
+
+
+#endif 
+
+# if prime
+bool isPrime(int iNum)
+{
+    for(int i=2;i<iNum;i++)
+    {
+        if(iNum%i == 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    int iNum, FactNum;
+    cout << " Enter number : ";
+    cin >> iNum;
+    if(isPrime(iNum))
+       cout << "PRIME";
+    else
+        cout << "NOT A PRIME";
+    return 0;
+}
+
+#endif
+
+# if LinkedList
+struct node
+{
+    node():next(NULL){}
+
+    int data;
+    node* next;
+}*startNode;
+
+void appendNode(int iVal)
+{
+    if(startNode == NULL)
+    {
+        startNode = new node;
+        startNode->data = iVal;
+        return;
+    }
+
+    node *tempNode;
+    tempNode = startNode;
+    while(tempNode->next != NULL)
+    {
+        tempNode = tempNode->next;
+    }
+
+    node *temp = new node;
+    temp->data = iVal;    
+
+    tempNode->next = temp;    
+}
+
+void showNode()
+{
+    node *tempNode = startNode;
+    while(tempNode != NULL)
+    {
+        cout << tempNode->data;
+        tempNode = tempNode->next;        
+    }
+    cout<<endl;
+}
+
+void deleteNode(int iIndex)
+{
+    if(iIndex == 0 || startNode == NULL)
+    {
+        cout<< "Linked list is empty or Index is 0";
+        return;
+    }
+
+    node *tmp = startNode;
+    node *tmpOld = tmp;
+    int iNum=0;
+    while(tmp != NULL)
+    {   
+        tmpOld = tmp;
+        tmp = tmp->next;
+
+        if(iIndex == iNum++)
+        {
+            tmpOld->next=tmp->next;
+            delete tmp;
+            tmp=NULL;
+            return;
+        }
+    }
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    startNode = NULL;
+
+    appendNode(10);
+    appendNode(20);
+    appendNode(30);
+    appendNode(40);
+    appendNode(50);
+    showNode();
+    deleteNode(3);
+    showNode();
+    return 0;
+}
+
+#endif 
+
+# if Virtual
+
+class A
+{   
+public:
+    
+virtual void Function1();
+virtual void Function2();
+};
+
+class B : public A
+{
+public:
+virtual void Function1(){cout<<"B::Function1";}
+virtual void Function2(){cout<<"B::Function2";}
+};
+
+class C : public B
+{
+public:
+virtual void Function1(){cout<<"C::Function1";}
+virtual void Funtion2(){cout<<"C::Function2";}
+};
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+   B *Obj = new B;
+   Obj->Function1();
+    return 0;
+}
+
+#endif
+
+# if OperatorOverloading
+class SeeMyCode
+{
+public:
+    SeeMyCode(){}
+    SeeMyCode(int tOne, int tTwo):mOne(tOne),mTwo(tTwo){}
+
+
+    SeeMyCode operator+(SeeMyCode tSeeMyCode);
+
+    int mOne, mTwo;
+};
+
+SeeMyCode SeeMyCode::operator+(SeeMyCode tSeeMyCode)
+{
+    SeeMyCode temp;
+    temp.mOne = mOne + tSeeMyCode.mOne;
+    temp.mTwo = mTwo + tSeeMyCode.mTwo;
+    return (temp);
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    SeeMyCode objOne(10,20);
+    SeeMyCode objTwo(30, 40);
+    SeeMyCode objThree;
+
+    objThree = objOne + objTwo;
+
+    cout<<objThree.mOne << "  " << objThree.mTwo ;
+    return 0;
+}
+
+#endif
+
+#if templateFunction
+template <class MyTemplate>
+MyTemplate GetGreater(MyTemplate mT1, MyTemplate mT2)
+{
+    return mT1 > mT2 ? mT1 : mT2;
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    int i1=10, i2=20;
+    float f1=140.10, f2=40.04;
+
+    cout << "int   = " << GetGreater(i1,i2);
+    cout << "\nfloat = " << GetGreater(f1,f2);
+    return 0;
+}
+
+#endif
+
+#if TemplateClass
+template <class tMyClass>       // Template declaration
+class SeeMyClass
+{
+    tMyClass mObjOne, mObjTwo;
+
+public:
+    SeeMyClass(){}
+    SeeMyClass(tMyClass t1, tMyClass t2):mObjOne(t1),mObjTwo(t2){}    
+    tMyClass GetMax();
+};
+
+template <class tMyClass>       // Template declaration again required, otherwise it gives compilation error
+tMyClass SeeMyClass<tMyClass>::GetMax()
+{
+    return mObjOne > mObjTwo ?  mObjOne : mObjTwo;
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    SeeMyClass<int> tt;        // Even for default CONSTRUCTOR, <int> should be mentioned, otherwise it gives compilation error
+    SeeMyClass<int> obj(30,20);
+    cout << obj.GetMax();
+    return 0;
+}
+#endif
+
+
+#if PureVirtualFunction
+class Metro
+{
+public:
+    virtual void Train(bool)=0;
+};
+
+void Metro::Train (bool bAvailable)
+{
+   
+    if(bAvailable)
+        cout<<"Metro Train Available";
+    else
+        cout<<"Metro Train Not Available";
+}
+
+class Pune:public Metro
+{
+public :
+    virtual void Train(bool bAvailable);
+};
+
+void Pune::Train(bool bAvailable) 
+{
+    if(bAvailable)
+        cout<<"Train Available";
+    else
+        cout<<"Train Not Available";
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    Metro* PuneObj = new Metro;
+    PuneObj->Train(true);
+    return 0;
+}
+
+#endif
+
+class BaseType
+ {
+ public:
+     BaseType()
+     {
+         cout<<"Call base ctor.";
+         DoSomething();
+     }
+
+     virtual void DoSomething()
+     {
+         cout << "Base DoSomething";
+     }
+ };
+
+ class DerivedType : public BaseType
+ {
+     public:
+     DerivedType()
+     {
+         cout << "Call derived ctor.";
+     }
+
+     virtual void DoSomething()
+     {
+         cout << "Derived DoSomething";
+     }
+ };
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    DerivedType* derived = new DerivedType;
+    return 0;
+}
+
+
+Simple c++ code to find number is palindrome or not:
+
+
+#include<iostream>
+using namespace std;
+int main()
+{
+    int palindrome, reverse=0;
+    cout<<"Enter number:  ";
+    cin>>palindrome;
+    int num=0,key=palindrome;
+for(int i=1;palindrome!=0;i++){
+
+    num=palindrome%10;
+    palindrome=palindrome/10;
+    reverse=num+(reverse*10);
+              }
+
+   if(reverse==key){
+   cout<<key<<" is a Palindrome Number";
+            }
+            else{
+   cout<<key<<"is NOT a Palindrome Number";
+            }
+return 0;
+}
+
+

@@ -1,0 +1,218 @@
+- each thread is assigned a priority level from 0 through 31.  If a priority-11 thread is waiting to execute and all other threads vying for CPU time have priority levels of 10 or less, the priority-11 thread runs next. If two priority-11 threads are waiting to execute, the scheduler executes the one that has executed the least recently. When that thread's timeslice, or quantum, is up, the other priority-11 thread gets executed if all the other threads still have lower priorities. As a rule, the scheduler always gives the next timeslice to the waiting thread with the highest priority.
+- The scheduler also plays a lot of tricks with priority levels to enhance the overall responsiveness of the system and to reduce the chance that any thread will be starved for CPU time. If a thread with a priority level of 7 goes for too long without receiving a timeslice, the scheduler may temporarily boost the thread's priority level to 8 or 9 or even higher to give it a chance to execute.
+- Windows also uses a technique called priority inheritance to prevent high-priority threads from blocking for too long on synchronization objects owned by low-priority threads. For example, if a priority-11 thread tries to claim a mutex owned by a priority-5 thread, the scheduler may boost the priority of the priority-5 thread so that the mutex will come free sooner.
+-  The thread's actual priority level—a number from 0 through 31—can vary from moment to moment because of priority boosting and deboosting. You can't control boosting (and you wouldn't want to even if you could), but you can control the base priority level by setting the process priority class and the relative thread priority level.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Process Priority Classes
+Most processes begin life with the priority class NORMAL_PRIORITY_CLASS. Once started, however, a process can change its priority by calling ::SetPriorityClass, which accepts a process handle (obtainable with ::GetCurrentProcess) and one of the specifiers shown in the following table.
+
+Process Priority Classes
+
+Priority Class 					Description 
+IDLE_PRIORITY_CLASS 			The process runs only when the system is idle—for example, when no other thread is waiting for a given CPU. 
+NORMAL_PRIORITY_CLASS 			The default process priority class. The process has no special scheduling needs. 
+HIGH_PRIORITY_CLASS 			The process receives priority over IDLE_PRIORITY_CLASS and NORMAL_PRIORITY_CLASS processes. 
+REALTIME_PRIORITY_CLASS 		The process must have the highest possible priority, and its threads should preempt even threads belonging to HIGH_PRIORITY_CLASS processes. 
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Relative Thread Priorities
+The table below shows the relative thread priority values you can pass to AfxBeginThread and CWinThread::SetThreadPriority. The default is THREAD_PRIORITY_NORMAL, which AfxBeginThread automatically assigns to a thread unless you specify otherwise. Normally, a THREAD_PRIORITY_NORMAL thread that belongs to a NORMAL_PRIORITY_CLASS process has a base priority level of 8. At various times, the thread's priority may be boosted for reasons mentioned earlier, but it will eventually return to 8. A THREAD_PRIORITY_LOWEST thread running in a HIGH_PRIORITY_CLASS background or foreground process has a base priority of 11. The actual numbers aren't as important as realizing that you can fine-tune the relative priorities of the threads within a process to achieve the best responsiveness and performance—and if necessary, you can adjust the priority of the process itself.
+
+Relative Thread Priorities
+
+Priority Value 					Description 
+THREAD_PRIORITY_IDLE 			The thread's base priority level is 1 if the process's priority class is HIGH_PRIORITY_CLASS or lower, or 16 if the process's priority class is REALTIME_PRIORITY_CLASS. 
+THREAD_PRIORITY_LOWEST 			The thread's base priority level is equal to the process's priority class minus 2. 
+THREAD_PRIORITY_BELOW_NORMAL 		The thread's base priority level is equal to the process's priority class minus 1. 
+THREAD_PRIORITY_NORMAL 		The default thread priority value. The thread's base priority level is equal to the process's priority class. 
+THREAD_PRIORITY_ABOVE_NORMAL 		The thread's base priority level is equal to the process's priority class plus 1. 
+THREAD_PRIORITY_HIGHEST 		The thread's base priority level is equal to the process's priority class plus 2. 
+THREAD_PRIORITY_TIME_CRITICAL 		The thread's base priority level is 15 if the process's priority class is HIGH_PRIORITY_CLASS or lower, or 31 if the process's priority class is REALTIME_PRIORITY_CLASS. 
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Using C Run-Time Functions in Multithreaded Applications
+Certain functions in the standard C run-time library pose problems for multithreaded applications. strtok, asctime, and several other C run-time functions use global variables to store intermediate data. If thread A calls one of these functions and thread B preempts thread A and calls the same function, global data stored by thread B could overwrite global data stored by thread A, or vice versa. One solution to this problem is to use thread synchronization objects to serialize access to C run-time functions. But even simple synchronization objects can be expensive in terms of processor time. Therefore, most modern C and C++ compilers come with two versions of the C run-time library: one that's thread-safe (can safely be called by two or more threads) and one that isn't. The thread-safe versions of the run-time library typically don't rely on thread synchronization objects. Instead, they store intermediate values in per-thread data structures.
+
+Visual C++ comes with six versions of the C run-time library. Which one you should choose depends on whether you're compiling a debug build or a release build, whether you want to link with the C run-time library statically or dynamically, and, obviously, whether your application is single-threaded or multithreaded. The following table shows the library names and the corresponding compiler switches.
+
+Visual C++ Versions of the C Run-Time Library
+
+Library Name 		Application Type 							Switch 
+Libc.lib 		Single-threaded; static linking; release builds 			/ML 
+Libcd.lib 		Single-threaded; static linking; debug builds 				/MLd 
+Libcmt.lib 		Multithreaded; static linking; release builds 				/MT 
+Libcmtd.lib 		Multithreaded; static linking; debug builds 				/MTd 
+Msvcrt.lib 		Single-threaded or multithreaded; dynamic linking; release builds	/MD 
+Msvcrtd.lib 		Single-threaded or multithreaded; dynamic linking; debug builds 	/MDd 
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Thread Synchronization
+
+Windows supports four types of synchronization objects that can be used to synchronize the actions performed by concurrently running threads:
+
+Critical sections
+Mutexes
+Events
+Semaphores
+
+MFC encapsulates these objects in classes named CCriticalSection, CMutex, CEvent, and CSemaphore. It also includes a pair of classes named CSingleLock and CMultiLock that further abstract the interfaces to thread synchronization objects. In the sections that follow, I'll describe how to use these classes to synchronize the actions of concurrently executing threads.
+
+Critical Sections
+IMP : The simplest type of thread synchronization object is the critical section. Critical sections are used to serialize accesses performed on linked lists, simple variables, structures, and other resources that are shared by two or more threads. The threads must belong to the same process, because critical sections don't work across process boundaries.
+CCriticalSection::Lock locks a critical section, and CCriticalSection::Unlock unlocks it. 
+
+// Global data
+CCriticalSection g_cs;  
+        
+// Thread A
+g_cs.Lock ();
+// Write to the linked list.
+g_cs.Unlock ();
+         
+// Thread B
+g_cs.Lock ();
+// Read from the linked list.
+g_cs.Unlock ();
+
+-------------------------
+
+Mutexes
+IMP : Mutex is a contraction of the words mutually and exclusive. Like critical sections, mutexes are used to gain exclusive access to a resource shared by two or more threads. Unlike critical sections, mutexes can be used to synchronize threads running in the same process or in different processes. Critical sections are generally preferred to mutexes for intraprocess thread synchronization needs because critical sections are faster, but if you want to synchronize threads running in two or more different processes, mutexes are the answer.
+
+Suppose two applications use a block of shared memory to exchange data. Inside that shared memory is a linked list that must be protected against concurrent thread accesses. A critical section won't work because it can't reach across process boundaries, but a mutex will do the job nicely. Here's what you do in each process before reading or writing the linked list:
+
+// Global data
+CMutex g_mutex (FALSE, _T ("MyMutex"));
+   
+g_mutex.Lock ();
+// Read or write the linked list.
+g_mutex.Unlock ();
+
+The first parameter passed to the CMutex constructor specifies whether the mutex is initially locked (TRUE) or unlocked (FALSE). The second parameter specifies the mutex's name, which is required if the mutex is used to synchronize threads in two different processes. You pick the name, but both processes must specify the same name so that the two CMutex objects will reference the same mutex object in the Windows kernel. Naturally, Lock blocks on a mutex locked by another thread, and Unlock frees the mutex so that others can lock it.
+
+By default, Lock will wait forever for a mutex to become unlocked. You can build in a fail-safe mechanism by specifying a maximum wait time in milliseconds. In the following example, the thread waits for up to 1 minute before accessing the resource guarded by the mutex.
+
+g_mutex.Lock (60000);
+// Read or write the linked list.
+g_mutex.Unlock ();
+
+Lock's return value tells you why the function call returned. A nonzero return means that the mutex came free, and 0 indicates that the time-out period expired first. If Lock returns 0, it's normally prudent not to access the shared resource because doing so could result in an overlapping access. Thus, code that uses Lock's time-out feature is normally structured like this:
+
+if (g_mutex.Lock (60000)) {
+    // Read or write the linked list.
+    g_mutex.Unlock ();
+}
+
+IMP : There is one other difference between mutexes and critical sections. If a thread locks a critical section and terminates without unlocking it, other threads waiting for the critical section to come free will block indefinitely. However, if a thread that locks a mutex fails to unlock it before terminating, the system deems the mutex to be "abandoned" and automatically frees the mutex so that waiting threads can resume.
+
+---------------------------
+
+Events
+MFC's CEvent class encapsulates Win32 event objects. An event is little more than a flag in the operating system kernel. At any given time, it can be in either of two states: raised (set) or lowered (reset). A set event is said to be in a signaled state, and a reset event is said to be nonsignaled. CEvent::SetEvent sets an event, and CEvent::ResetEvent resets it. A related function, CEvent::PulseEvent, sets and clears an event in one operation.
+
+Events are sometimes described as "thread triggers." One thread calls CEvent::Lock to block on an event and wait for it to become set. Another thread sets the event and thereby releases the waiting thread. Setting the event is like pulling a trigger: it unblocks the waiting thread and allows it to resume executing. An event can have one thread or several threads blocking on it, and if your code is properly written, all waiting threads will be released when the event becomes set.
+
+Windows supports two different types of events: autoreset events and manual-reset events. The difference between them is very simple, but the implications are far-reaching. An autoreset event is automatically reset to the nonsignaled state when a thread blocking on it is released. A manual-reset event doesn't reset automatically; it must be reset programmatically. The rules for choosing between autoreset and manual-reset events—and for using them once you've made your selection—are as follows:
+
+
+If just one thread will be triggered by the event, use an autoreset event and release the waiting thread with SetEvent. There's no need to call ResetEvent because the event is reset automatically the moment the thread is released.
+
+
+If two or more threads will be triggered by the event, use a manual-reset event and release all waiting threads with PulseEvent. Once more, you don't need to call ResetEvent because PulseEvent resets the event for you after releasing the threads.
+
+It's vital to use a manual-reset event to trigger multiple threads. Why? Because an autoreset event would be reset the moment one of the threads was released and would therefore trigger just one thread. It's equally important to use PulseEvent to pull the trigger on a manual-reset event. If you use SetEvent and ResetEvent, you have no guarantee that all waiting threads will be released. PulseEvent not only sets and resets the event, but it also ensures that all threads waiting on the event are released before resetting the event.
+
+---------------------------------
+
+Semaphores
+IMP : The fourth and final type of synchronization object is the semaphore. Events, critical sections, and mutexes are "all or nothing" objects in the sense that Lock blocks on them if any other thread has them locked. Semaphores are different. Semaphores maintain resource counts representing the number of resources available. Locking a semaphore decrements its resource count, and unlocking a semaphore increments the resource count. A thread blocks only if it tries to lock a semaphore whose resource count is 0. In that case, the thread blocks until another thread unlocks the semaphore and thereby raises the resource count or until a specified time-out period has elapsed. Semaphores can be used to synchronize threads within a process or threads that belong to different processes.
+
+MFC represents semaphores with instances of the class CSemaphore. The statement
+
+CSemaphore g_semaphore (3, 3);
+
+constructs a semaphore object that has an initial resource count of 3 (parameter 1) and a maximum resource count of 3 (parameter 2). If the semaphore will be used to synchronize threads in different processes, you should include a third parameter assigning the semaphore a name. An optional fourth parameter points to a SECURITY_ATTRIBUTES structure (default=NULL). Each thread that accesses a resource controlled by a semaphore can do so like this:
+
+g_semaphore.Lock ();
+// Access the shared resource.
+g_semaphore.Unlock ();
+
+ 
+
+
+As long as no more than three threads try to access the resource at the same time, Lock won't suspend the thread. But if the semaphore is locked by three threads and a fourth thread calls Lock, that thread will block until one of the other threads calls Unlock. (See Figure 17-6.) To limit the time that Lock will wait for the semaphore's resource count to become nonzero, you can pass a maximum wait time (in milliseconds, as always) to the Lock function.
+
+ 
+
+Figure 17-6. Using a semaphore to guard a shared resource. 
+
+CSemaphore::Unlock can be used to increment the resource count by more than 1 and also to find out what the resource count was before Unlock was called. For example, suppose the same thread calls Lock twice in succession to lay claim to two resources guarded by a semaphore. Rather than call Unlock twice, the thread can do its unlocking like this:
+
+LONG lPrevCount;
+g_semaphore.Unlock (2, &lPrevCount);
+
+ 
+
+
+There are no functions in either MFC or the API that return a semaphore's resource count other than CSemaphore::Unlock and its API equivalent, ::ReleaseSemaphore.
+
+IMP : A classic use for semaphores is to allow a group of m threads to share n resources, where m is greater than n. For example, suppose you launch 10 worker threads and charge each with the task of gathering data. Whenever a thread fills a buffer with data, it transmits the data through an open socket, clears the buffer, and starts gathering data again. Now suppose that only three sockets are available at any given time. If you guard the socket pool with a semaphore whose resource count is 3 and code each thread so that it locks the semaphore before claiming a socket, threads will consume no CPU time while they wait for a socket to come free.
+
+--------------------------
+
+The CSingleLock and CMultiLock Classes
+
+IMP : MFC includes a pair of classes named CSingleLock and CMultiLock that have Lock and Unlock functions of their own. You can wrap a critical section, mutex, event, or semaphore in a CSingleLock object and use CSingleLock::Lock to apply a lock, as demonstrated here:
+
+CCriticalSection g_cs;    
+CSingleLock lock (&g_cs); // Wrap it in a CSingleLock.
+lock.Lock ();             // Lock the critical section.
+
+Is there any advantage to locking a critical section this way instead of calling the CCriticalSection object's Lock function directly? Sometimes, yes. Consider what happens if the following code throws an exception between the calls to Lock and Unlock:
+
+g_cs.Lock ();
+    
+g_cs.Unlock ();
+
+If an exception occurs, the critical section will remain locked forever because the call to Unlock will be bypassed. But look what happens if you architect your code this way:
+
+CSingleLock lock (&g_cs);
+lock.Lock ();
+ 
+lock.Unlock ();
+
+IMP : The critical section won't be left permanently locked. Why? Because the CSingleLock object is created on the stack, its destructor is called if an exception is thrown. CSingleLock's destructor calls Unlock on the contained synchronization object. In other words, CSingleLock is a handy tool for making sure that a locked synchronization object gets unlocked even in the face of inopportune exceptions.
+
+IMP : CMultiLock is an altogether different animal. By using a CMultiLock, a thread can block on up to 64 synchronization objects at once. And depending on how it calls CMultiLock::Lock, the thread can block until one of the synchronization objects comes free or until all of them come free. The following example demonstrates how a thread can block on two events and one mutex simultaneously. Be aware of the fact that events, mutexes, and semaphores can be wrapped in CMultiLock objects, but critical sections can't.
+
+CMutex g_mutex;
+CEvent g_event[2];
+CSyncObject* g_pObjects[3] = { &g_mutex, &g_event[0], &g_event[1] };    
+    
+// Block until all three objects become signaled.
+CMultiLock multiLock (g_pObjects, 3);
+multiLock.Lock ();    
+    
+// Block until one of the three objects becomes signaled.
+CMultiLock multiLock (g_pObjects, 3);
+multiLock.Lock (INFINITE, FALSE);
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+

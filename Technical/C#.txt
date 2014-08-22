@@ -1,0 +1,140 @@
+31. What is Common Language Specification (CLS)?
+==>CLS is a set of basic rules, which must be followed by each .NET language to be a .NET- compliant language. It enables interoperability between two .NET-compliant languages. CLS is a subset of CTS; therefore, the languages supported by CLS can use each other's class libraries similar to their own. Application programming interfaces (APIs), which are designed by following the rules defined in CLS can be used by all .NET-compliant languages.
+
+
+32. What is the role of the JIT compiler in .NET Framework?
+==>The JIT compiler is an important element of CLR, which loads MSIL on target machines for execution. The MSIL is stored in .NET assemblies after the developer has compiled the code written in any .NET-compliant programming language, such as Visual Basic and C#.
+
+JIT compiler translates the MSIL code of an assembly and uses the CPU architecture of the target machine to execute a .NET application. It also stores the resulting native code so that it is accessible for subsequent calls. If a code executing on a target machine calls a non-native method, the JIT compiler converts the MSIL of that method into native code. JIT compiler also enforces type-safety in runtime environment of .NET Framework. It checks for the values that are passed to parameters of any method. 
+
+For example, the JIT compiler detects any event, if a user tries to assign a 32-bit value to a parameter that can only accept 8-bit value.
+
+
+
+
+33.Describe the roles of CLR in .NET Framework.
+==>CLR provides an environment to execute .NET applications on target machines. CLR is also a common runtime environment for all .NET code irrespective of their programming language, as the compilers of respective language in .NET Framework convert every source code into a common language known as MSIL or IL (Intermediate Language).
+
+CLR also provides various services to execute processes, such as memory management service and security services. CLR performs various tasks to manage the execution process of .NET applications.
+
+The responsibilities of CLR are listed as follows:
+
+Automatic memory management
+Garbage Collection
+Code Access Security
+Code verification
+JIT compilation of .NET code
+
+
+
+1.What are the advantages of C# over C, C++ or Java?
+==> Like C++ and Java, C# is a high-level object-oriented programming language. It is generally more efficient than Java and has useful features such as operator overloading. C# is based on C++ but has several advantages over this older language: it is type-safe, more comprehensively object-oriented, and the syntax has been simplified in several important ways. Most importantly, C# interoperates exceptionally well with other languages on the .NET platform. For this reason, C# is a better choice for building applications for .NET.
+
+
+2.How are namespaces used in C#?
+==>Classes in the .NET framework can be organized using namespaces. The scope of a class is declared using the namespace keyword. You can then include methods from the namespace in your code by including the line “using [namespace];” at the start of your program.
+
+Namespaces are used to organize classes within the .NET Framework. They dictate the logical structure of the code. They are analogous to Java packages, with the key difference being Java packages define the physical layout of source files (directory structure) while .NET namespaces do not. However, many developers follow this approach and organize their C# source files in directories that correlate with namespaces. The .NET Framework has namespaces defined for its many classes, such as System.Xml--these are utilized via the using statement. Namespaces are assigned to classes via the namespace keyword.
+
+
+3.What is the GAC?
+==>The acronym GAC stands for Global Assembly Cache. The GAC is where assemblies are stored so that many different applications can share these assemblies. Multiple versions of assemblies can be stored in the GAC, with applications specifying which version to use in the config file.
+
+The GAC is the Global Assembly Cache. Shared assemblies reside in the GAC; this allows applications to share assemblies instead of having the assembly distributed with each application. Versioning allows multiple assembly versions to exist in the GAC--applications can specify version numbers in the config file. The gacutil command line tool is used to manage the GAC.
+
+
+4.How does .NET help to manage DLLs on a system?
+==>When you have multiple DLLs on a system, you are in what is known as “DLL Hell”. Managing the DLLs can be particularly difficult if there are multiple versions of the various DLLs. In the .NET framework, assemblies are managed using the information stored in their metadata, and you can store multiple versions of each in the GAC.
+
+
+
+5.What is .NET Framework?
+==>.NET Framework is a complete environment that allows developers to develop, run, and deploy the following applications:
+
+Console applications
+Windows Forms applications
+Windows Presentation Foundation (WPF) applications
+Web applications (ASP.NET applications)
+Web services
+Windows services
+Service-oriented applications using Windows Communication Foundation (WCF)
+Workflow-enabled applications using Windows Workflow Foundation (WF)
+
+.NET Framework also enables a developer to create sharable components to be used in distributed computing architecture. NET Framework supports the object-oriented programming model for multiple languages, such as Visual Basic, Visual C#, and Visual C++. .NET Framework supports multiple programming languages in a manner that allows language interoperability. This implies that each language can use the code written in some other language.
+
+
+6. What are the main components of .NET Framework?
+==>.NET Framework provides enormous advantages to software developers in comparison to the advantages provided by other platforms. Microsoft has united various modern as well as existing technologies of software development in .NET Framework. These technologies are used by developers to develop highly efficient applications for modern as well as future business needs. The following are the key components of .NET Framework:
+
+.NET Framework Class Library
+Common Language Runtime
+Dynamic Language Runtimes (DLR)
+Application Domains
+Runtime Host
+Common Type System
+Metadata and Self-Describing Components
+Cross-Language Interoperability
+.NET Framework Security
+Profiling
+Side-by-Side Execution
+
+
+7. What is an IL?
+==>Intermediate Language is also known as MSIL (Microsoft Intermediate Language) or CIL (Common Intermediate Language). All .NET source code is compiled to IL. IL is then converted to machine code at the point where the software is installed, or at run-time by a Just-In-Time (JIT) compiler.
+
+
+8.What is Manifest?
+==>Assembly metadata is stored in Manifest. Manifest contains all the metadata needed to do the following things
+Version of assembly.
+Security identity.
+Scope of the assembly.
+Resolve references to resources and classes.
+
+The assembly manifest can be stored in a PE file either (an .exe or) .dll with Microsoft 
+intermediate language (MSIL code with Microsoft intermediate language (MSIL) code or in a 
+stand-alone PE file, that contains only assembly manifest information.
+
+
+
+9.What is Common Type System (CTS)?
+
+==>CTS is the component of CLR through which .NET Framework provides support for multiple languages because it contains a type system that is common across all the languages. Two CTS-compliant languages do not require type conversion when calling the code written in one language from within the code written in another language. CTS provide a base set of data types for all the languages supported by.NET Framework. This means that the size of integer and long variables is same across all .NET-compliant programming languages. However, each language uses aliases for the base data types provided by CTS. For example, CTS uses the data type system. int32 to represent a 4 byte integer value; however, Visual Basic uses the alias integer for the same; whereas, C# uses the alias int. This is done for the sake of clarity and simplicity.
+
+
+
+10. Differentiate between managed and unmanaged code?
+==>Managed code is the code that is executed directly by the CLR instead of the operating system. The code compiler first compiles the managed code to intermediate language (IL) code, also called as MSIL code. This code doesn't depend on machine configurations and can be executed on different machines.
+
+Unmanaged code is the code that is executed directly by the operating system outside the CLR environment. It is directly compiled to native machine code which depends on the machine configuration.
+In the managed code, since the execution of the code is governed by CLR, the runtime provides different services, such as garbage collection, type checking, exception handling, and security support. These services help provide uniformity in platform and language-independent behavior of managed code applications. In the unmanaged code, the allocation of memory, type safety, and security is required to be taken care of by the developer. If the unmanaged code is not properly handled, it may result in memory leak. Examples of unmanaged code are ActiveX components and Win32 APIs that execute beyond the scope of native CLR.
+
+
+11.Mention the execution process for managed code.
+
+A piece of managed code is executed as follows:
+
+Choosing a language compiler
+Compiling the code to MSIL
+Compiling MSIL to native code
+Executing the code.
+
+
+
+12.What are tuples?
+==>Tuple is a fixed-size collection that can have elements of either same or different data types. Similar to arrays, a user must have to specify the size of a tuple at the time of declaration. Tuples are allowed to hold up from 1 to 8 elements and if there are more than 8 elements, then the 8th element can be defined as another tuple. Tuples can be specified as parameter or return type of a method.
+
+
+
+13.What is Difference between NameSpace and Assembly?
+==>Following are the differences between namespace and assembly: 
+Assembly is physical grouping of logical units, Namespace, logically groups classes.
+Namespace can span multiple assembly.
+
+
+14.Which is the root namespace for fundamental types in .NET Framework?
+==>System.Object is the root namespace for fundamental types in .NET Framework.
+
+
+
+15.What is lazy initialization?
+==>Lazy initialization is a process by which an object is not initialized until it is first called in your code. The .NET 4.0 introduces a new wrapper class, System.Lazy<T>, for executing the lazy initialization in your application. Lazy initialization helps you to reduce the wastage of resources and memory requirements to improve performance. It also supports thread-safety.

@@ -1,0 +1,621 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265
+{\fonttbl\f0\fnil\fcharset0 Consolas;\f1\fnil\fcharset0 Consolas-Bold;\f2\fswiss\fcharset0 Helvetica;
+\f3\fmodern\fcharset0 Courier-Bold;\f4\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red109\green109\blue109;\red15\green114\blue1;\red10\green82\blue135;
+\red251\green0\blue129;\red0\green0\blue255;\red11\green86\blue1;\red247\green247\blue247;\red217\green217\blue217;
+}
+\vieww25400\viewh13380\viewkind0
+\deftab720
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt\clvertalbase \clshdrawnil \clwWidth11880\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f0\fs26 \cf2 #include <stdio.h>\cf0 \
+\cf2 #include <stdlib.h>\cf0 \
+\'a0\
+\pard\intbl\itap1\pardeftab720
+\cf3 /* A binary tree node has data, pointer to left child\cf0 \
+\'a0\'a0\'a0\cf3 and a pointer to right child */\cf0 \
+\pard\intbl\itap1\pardeftab720
+
+\f1\b \cf4 struct
+\f0\b0 \cf0  node\
+\{\
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf2 int
+\f0\b0 \cf0  data;\
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* left;\
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* right;\
+\};\
+\'a0\
+\pard\intbl\itap1\pardeftab720
+\cf3 /* Helper function that allocates a new node with the\cf0 \
+\'a0\'a0\'a0\cf3 given data and NULL left and right pointers. */\cf0 \
+\pard\intbl\itap1\pardeftab720
+
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* newNode(
+\f1\b \cf2 int
+\f0\b0 \cf0  data)\
+\{\
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* node = (
+\f1\b \cf4 struct
+\f0\b0 \cf0  node*)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 malloc
+\f0\b0 \cf0 (
+\f1\b \cf4 sizeof
+\f0\b0 \cf0 (
+\f1\b \cf4 struct
+\f0\b0 \cf0  node));\
+\'a0\'a0\'a0\'a0\'a0node->data = data;\
+\'a0\'a0\'a0\'a0\'a0node->left = NULL;\
+\'a0\'a0\'a0\'a0\'a0node->right = NULL;\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 return
+\f0\b0 \cf0 (node);\
+\}\
+\'a0\
+\pard\intbl\itap1\pardeftab720
+\cf3 /* Given a binary tree, print its nodes according to the\cf0 \
+\'a0\'a0\cf3 "bottom-up" postorder traversal. */\cf0 \
+\pard\intbl\itap1\pardeftab720
+
+\f1\b \cf4 void
+\f0\b0 \cf0  printPostorder(
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* node)\
+\{\
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 if
+\f0\b0 \cf0  (node == NULL)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 return
+\f0\b0 \cf0 ;\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\cf3 // first recur on left subtree\cf0 \
+\'a0\'a0\'a0\'a0\'a0printPostorder(node->left);\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\cf3 // then recur on right subtree\cf0 \
+\'a0\'a0\'a0\'a0\'a0printPostorder(node->right);\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\cf3 // now deal with the node\cf0 \
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 printf
+\f0\b0 \cf0 (\cf6 "%d "\cf0 , node->data);\
+\}\
+\'a0\
+\pard\intbl\itap1\pardeftab720
+\cf3 /* Given a binary tree, print its nodes in inorder*/\cf0 \
+\pard\intbl\itap1\pardeftab720
+
+\f1\b \cf4 void
+\f0\b0 \cf0  printInorder(
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* node)\
+\{\
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 if
+\f0\b0 \cf0  (node == NULL)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 return
+\f0\b0 \cf0 ;\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\cf3 /* first recur on left child */\cf0 \
+\'a0\'a0\'a0\'a0\'a0printInorder(node->left);\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\cf3 /* then print the data of node */\cf0 \
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 printf
+\f0\b0 \cf0 (\cf6 "%d "\cf0 , node->data);\'a0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\cf3 /* now recur on right child */\cf0 \
+\'a0\'a0\'a0\'a0\'a0printInorder(node->right);\
+\}\
+\'a0\
+\pard\intbl\itap1\pardeftab720
+\cf3 /* Given a binary tree, print its nodes in inorder*/\cf0 \
+\pard\intbl\itap1\pardeftab720
+
+\f1\b \cf4 void
+\f0\b0 \cf0  printPreorder(
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* node)\
+\{\
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 if
+\f0\b0 \cf0  (node == NULL)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 return
+\f0\b0 \cf0 ;\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\cf3 /* first print data of node */\cf0 \
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 printf
+\f0\b0 \cf0 (\cf6 "%d "\cf0 , node->data);\'a0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\cf3 /* then recur on left sutree */\cf0 \
+\'a0\'a0\'a0\'a0\'a0printPreorder(node->left);\'a0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\cf3 /* now recur on right subtree */\cf0 \
+\'a0\'a0\'a0\'a0\'a0printPreorder(node->right);\
+\}\'a0\'a0\'a0 \
+\'a0\
+\pard\intbl\itap1\pardeftab720
+\cf3 /* Driver program to test above functions*/\cf0 \
+\pard\intbl\itap1\pardeftab720
+
+\f1\b \cf2 int
+\f0\b0 \cf0  main()\
+\{\
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 struct
+\f0\b0 \cf0  node *root\'a0 = newNode(1);\
+\'a0\'a0\'a0\'a0\'a0root->left\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 = newNode(2);\
+\'a0\'a0\'a0\'a0\'a0root->right\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 = newNode(3);\
+\'a0\'a0\'a0\'a0\'a0root->left->left\'a0\'a0\'a0\'a0 = newNode(4);\
+\'a0\'a0\'a0\'a0\'a0root->left->right\'a0\'a0 = newNode(5); \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 printf
+\f0\b0 \cf0 (\cf6 "\\n Preorder traversal of binary tree is \\n"\cf0 );\
+\'a0\'a0\'a0\'a0\'a0printPreorder(root);\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 printf
+\f0\b0 \cf0 (\cf6 "\\n Inorder traversal of binary tree is \\n"\cf0 );\
+\'a0\'a0\'a0\'a0\'a0printInorder(root);\'a0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 printf
+\f0\b0 \cf0 (\cf6 "\\n Postorder traversal of binary tree is \\n"\cf0 );\
+\'a0\'a0\'a0\'a0\'a0printPostorder(root);\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 getchar
+\f0\b0 \cf0 ();\
+\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 return
+\f0\b0 \cf0  0;\
+\}\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+ZIG ZAG TRAVERSAL\
+\
+\pard\intbl\itap1\pardeftab720\sa259
+
+\f2\b \cf0 Method 1 (Recursive)
+\b0 \uc0\u8232 This problem can bee seen as an extension of the {\field{\*\fldinst{HYPERLINK "http://geeksforgeeks.org/?p=2686"}}{\fldrslt \cf7 level order traversal}} post.\uc0\u8232 To print the nodes in spiral order, nodes at different levels should be printed in alternating order. An additional Boolean variable 
+\i ltr 
+\i0 is used to change printing order of levels. If 
+\i ltr 
+\i0 is 1 then printGivenLevel() prints nodes from left to right else from right to left. Value of 
+\i ltr 
+\i0 is flipped in each iteration to change the order.\
+Function to print level order traversal of tree
+\f3\b\fs24 \cb8 \
+printSpiral(tree)
+\f4\b0 \
+  bool ltr = 0;\
+  for d = 1 to height(tree)\
+     printGivenLevel(tree, d, ltr);\
+     ltr ~= ltr /*flip ltr*/\
+
+\f2\fs26 \cb1 Function to print all nodes at a given level\
+\pard\intbl\itap1\pardeftab720
+
+\f3\b\fs24 \cf0 \cb8 printGivenLevel(tree, level, ltr)
+\f4\b0 \
+if tree is NULL then return;\
+if level is 1, then\
+    print(tree->data);\
+else if level greater than 1, then\
+    if(rtl)\
+        printGivenLevel(tree->right, level-1, ltr);\
+        printGivenLevel(tree->left, level-1, ltr);\
+    else\
+        printGivenLevel(tree->left, level-1, ltr);\
+        printGivenLevel(tree->right, level-1, ltr);\
+\pard\intbl\itap1\pardeftab720\sa259
+
+\f2\fs26 \cf0 \cb1 Following is C implementation of above algorithm.\
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt\clvertalbase \clshdrawnil \clwWidth11880\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+
+\f0 \cf2 #include <stdio.h>\cf0 \
+\cf2 #include <stdlib.h>\cf0 \
+\cf2 #include <stdbool.h>\cf0 \
+\'a0\
+\cf3 /* A binary tree node has data, pointer to left child\cf0 \
+\'a0\'a0\'a0\cf3 and a pointer to right child */\cf0 \
+
+\f1\b \cf4 struct
+\f0\b0 \cf0  node\
+\{\
+\'a0\'a0\'a0\'a0
+\f1\b \cf2 int
+\f0\b0 \cf0  data;\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* left;\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* right;\
+\};\
+\'a0\
+\cf3 /* Function protoypes */\cf0 \
+
+\f1\b \cf4 void
+\f0\b0 \cf0  printGivenLevel(
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* root, 
+\f1\b \cf2 int
+\f0\b0 \cf0  level, 
+\f1\b \cf2 int
+\f0\b0 \cf0  ltr);\
+
+\f1\b \cf2 int
+\f0\b0 \cf0  height(
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* node);\
+
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* newNode(
+\f1\b \cf2 int
+\f0\b0 \cf0  data);\
+\'a0\
+\cf3 \cb9 /* Function to print spiral traversal of a tree*/\cf0 \
+
+\f1\b \cf4 void
+\f0\b0 \cf0  printSpiral(
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* root)\
+\{\
+\'a0\'a0\'a0\'a0
+\f1\b \cf2 int
+\f0\b0 \cf0  h = height(root);\
+\'a0\'a0\'a0\'a0
+\f1\b \cf2 int
+\f0\b0 \cf0  i;\
+\'a0\
+\'a0\'a0\'a0\'a0\cf3 /*ltr -> Left to Right. If this variable is set,\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\cf3 then the given level is traverseed from left to right. */\cf0 \
+\'a0\'a0\'a0\'a0
+\f1\b \cf2 bool
+\f0\b0 \cf0  ltr = 
+\f1\b \cf4 false
+\f0\b0 \cf0 ;\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 for
+\f0\b0 \cf0 (i=1; i<=h; i++)\
+\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0printGivenLevel(root, i, ltr);\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf3 /*Revert ltr to traverse next level in oppposite order*/\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0ltr = !ltr;\
+\'a0\'a0\'a0\'a0\}\
+\}\
+\'a0\
+\cf3 /* Print nodes at a given level */\cf0 \
+
+\f1\b \cf4 void
+\f0\b0 \cf0  printGivenLevel(
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* root, 
+\f1\b \cf2 int
+\f0\b0 \cf0  level, 
+\f1\b \cf2 int
+\f0\b0 \cf0  ltr)\
+\{\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 if
+\f0\b0 \cf0 (root == NULL)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 return
+\f0\b0 \cf0 ;\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 if
+\f0\b0 \cf0 (level == 1)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 printf
+\f0\b0 \cf0 (\cf6 "%d "\cf0 , root->data);\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 else
+\f0\b0 \cf0  
+\f1\b \cf4 if
+\f0\b0 \cf0  (level > 1)\
+\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 if
+\f0\b0 \cf0 (ltr)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0printGivenLevel(root->left, level-1, ltr);\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0printGivenLevel(root->right, level-1, ltr);\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\}\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 else
+\f0\b0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0printGivenLevel(root->right, level-1, ltr);\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0printGivenLevel(root->left, level-1, ltr);\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\}\
+\'a0\'a0\'a0\'a0\}\
+\}\
+\cb1 \'a0\
+\cf3 /* Compute the "height" of a tree -- the number of\cf0 \
+\'a0\'a0\'a0\'a0\cf3 nodes along the longest path from the root node\cf0 \
+\'a0\'a0\'a0\'a0\cf3 down to the farthest leaf node.*/\cf0 \
+
+\f1\b \cf2 int
+\f0\b0 \cf0  height(
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* node)\
+\{\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 if
+\f0\b0 \cf0  (node==NULL)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 return
+\f0\b0 \cf0  0;\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 else
+\f0\b0 \cf0 \
+\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf3 /* compute the height of each subtree */\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf2 int
+\f0\b0 \cf0  lheight = height(node->left);\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf2 int
+\f0\b0 \cf0  rheight = height(node->right);\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf3 /* use the larger one */\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 if
+\f0\b0 \cf0  (lheight > rheight)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 return
+\f0\b0 \cf0 (lheight+1);\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 else
+\f0\b0 \cf0  
+\f1\b \cf4 return
+\f0\b0 \cf0 (rheight+1);\
+\'a0\'a0\'a0\'a0\}\
+\}\
+\'a0\
+\cf3 /* Helper function that allocates a new node with the\cf0 \
+\'a0\'a0\'a0\cf3 given data and NULL left and right pointers. */\cf0 \
+
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* newNode(
+\f1\b \cf2 int
+\f0\b0 \cf0  data)\
+\{\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* node = (
+\f1\b \cf4 struct
+\f0\b0 \cf0  node*)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 malloc
+\f0\b0 \cf0 (
+\f1\b \cf4 sizeof
+\f0\b0 \cf0 (
+\f1\b \cf4 struct
+\f0\b0 \cf0  node));\
+\'a0\'a0\'a0\'a0node->data = data;\
+\'a0\'a0\'a0\'a0node->left = NULL;\
+\'a0\'a0\'a0\'a0node->right = NULL;\
+\'a0\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 return
+\f0\b0 \cf0 (node);\
+\}\
+\'a0\
+\cf3 /* Driver program to test above functions*/\cf0 \
+
+\f1\b \cf2 int
+\f0\b0 \cf0  main()\
+\{\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 struct
+\f0\b0 \cf0  node *root = newNode(1);\
+\'a0\'a0\'a0\'a0root->left\'a0\'a0\'a0\'a0\'a0\'a0\'a0 = newNode(2);\
+\'a0\'a0\'a0\'a0root->right\'a0\'a0\'a0\'a0\'a0\'a0 = newNode(3);\
+\'a0\'a0\'a0\'a0root->left->left\'a0 = newNode(7);\
+\'a0\'a0\'a0\'a0root->left->right = newNode(6);\
+\'a0\'a0\'a0\'a0root->right->left\'a0 = newNode(5);\
+\'a0\'a0\'a0\'a0root->right->right = newNode(4);\
+\'a0\'a0\'a0\'a0
+\f1\b \cf5 printf
+\f0\b0 \cf0 (\cf6 "Spiral Order traversal of binary tree is \\n"\cf0 );\
+\'a0\'a0\'a0\'a0printSpiral(root);\
+\'a0\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 return
+\f0\b0 \cf0  0;\
+\}\nestcell \lastrow\nestrow
+\pard\intbl\itap1\pardeftab720\sa259
+
+\f2 \cf0 Output:\
+\pard\intbl\itap1\pardeftab720
+
+\f4\fs24 \cf0 \cb8 Spiral Order traversal of binary tree is\
+1 2 3 4 5 6 7\
+\pard\intbl\itap1\pardeftab720\sa259
+
+\f2\b\fs26 \cf0 \cb1 Time Complexity:
+\b0  Worst case time complexity of the above method is 
+\b O(n^2)
+\b0 . Worst case occurs in case of skewed trees.\
+\uc0\u8232 \u8232 
+\b Method 2 (Iterative)
+\b0 \uc0\u8232 We can print spiral order traversal in
+\b  O(n) time 
+\b0 and O(n) extra space. The idea is to use two stacks. We can use one stack for printing from left to right and other stack for printing from right to left. In every iteration, we have nodes of one level in one of the stacks. We print the nodes, and push nodes of next level in other stack.\
+
+\itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt\clvertalbase \clshdrawnil \clwWidth11880\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap2\pardeftab720
+
+\f0 \cf3 // C++ implementation of a O(n) time method for spiral order traversal\cf0 \
+\cf2 #include <iostream>\cf0 \
+\cf2 #include <stack>\cf0 \
+
+\f1\b \cf4 using
+\f0\b0 \cf0  
+\f1\b \cf4 namespace
+\f0\b0 \cf0  std;\
+\'a0\
+\cf3 // Binary Tree node\cf0 \
+
+\f1\b \cf4 struct
+\f0\b0 \cf0  node\
+\{\
+\'a0\'a0\'a0\'a0
+\f1\b \cf2 int
+\f0\b0 \cf0  data;\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 struct
+\f0\b0 \cf0  node *left, *right;\
+\};\
+\'a0\
+
+\f1\b \cf4 \cb9 void
+\f0\b0 \cf0  printSpiral(
+\f1\b \cf4 struct
+\f0\b0 \cf0  node *root)\
+\{\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 if
+\f0\b0 \cf0  (root == NULL)\'a0 
+\f1\b \cf4 return
+\f0\b0 \cf0 ;\'a0\'a0 \cf3 // NULL check\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\cf3 // Create two stacks to store alternate levels\cf0 \
+\'a0\'a0\'a0\'a0stack<
+\f1\b \cf4 struct
+\f0\b0 \cf0  node*> s1;\'a0 \cf3 // For levels to be printed from right to left\cf0 \
+\'a0\'a0\'a0\'a0stack<
+\f1\b \cf4 struct
+\f0\b0 \cf0  node*> s2;\'a0 \cf3 // For levels to be printed from left to right\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\cf3 // Push first level to first stack 's1'\cf0 \
+\'a0\'a0\'a0\'a0s1.push(root);\
+\'a0\
+\'a0\'a0\'a0\'a0\cf3 // Keep ptinting while any of the stacks has some nodes\cf0 \
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 while
+\f0\b0 \cf0  (!s1.empty() || !s2.empty())\
+\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf3 // Print nodes of current level from s1 and push nodes of\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf3 // next level to s2\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 while
+\f0\b0 \cf0  (!s1.empty())\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 struct
+\f0\b0 \cf0  node *temp = s1.top();\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0s1.pop();\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0cout << temp->data << \cf6 " "\cf0 ;\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf3 // Note that is right is pushed before left\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 if
+\f0\b0 \cf0  (temp->right)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0s2.push(temp->right);\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 if
+\f0\b0 \cf0  (temp->left)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0s2.push(temp->left);\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\}\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf3 // Print nodes of current level from s2 and push nodes of\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf3 // next level to s1\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 while
+\f0\b0 \cf0  (!s2.empty())\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 struct
+\f0\b0 \cf0  node *temp = s2.top();\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0s2.pop();\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0cout << temp->data << \cf6 " "\cf0 ;\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf3 // Note that is left is pushed before right\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 if
+\f0\b0 \cf0  (temp->left)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0s1.push(temp->left);\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf4 if
+\f0\b0 \cf0  (temp->right)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0s1.push(temp->right);\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\}\
+\'a0\'a0\'a0\'a0\}\
+\}\
+\cb1 \'a0\
+\cf3 // A utility functiont to create a new node\cf0 \
+
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* newNode(
+\f1\b \cf2 int
+\f0\b0 \cf0  data)\
+\{\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 struct
+\f0\b0 \cf0  node* node = 
+\f1\b \cf4 new
+\f0\b0 \cf0  
+\f1\b \cf4 struct
+\f0\b0 \cf0  node;\
+\'a0\'a0\'a0\'a0node->data = data;\
+\'a0\'a0\'a0\'a0node->left = NULL;\
+\'a0\'a0\'a0\'a0node->right = NULL;\
+\'a0\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 return
+\f0\b0 \cf0 (node);\
+\}\
+\'a0\
+
+\f1\b \cf2 int
+\f0\b0 \cf0  main()\
+\{\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 struct
+\f0\b0 \cf0  node *root = newNode(1);\
+\'a0\'a0\'a0\'a0root->left\'a0\'a0\'a0\'a0\'a0\'a0\'a0 = newNode(2);\
+\'a0\'a0\'a0\'a0root->right\'a0\'a0\'a0\'a0\'a0\'a0 = newNode(3);\
+\'a0\'a0\'a0\'a0root->left->left\'a0 = newNode(7);\
+\'a0\'a0\'a0\'a0root->left->right = newNode(6);\
+\'a0\'a0\'a0\'a0root->right->left\'a0 = newNode(5);\
+\'a0\'a0\'a0\'a0root->right->right = newNode(4);\
+\'a0\'a0\'a0\'a0cout << \cf6 "Spiral Order traversal of binary tree is \\n"\cf0 ;\
+\'a0\'a0\'a0\'a0printSpiral(root);\
+\'a0\
+\'a0\'a0\'a0\'a0
+\f1\b \cf4 return
+\f0\b0 \cf0  0;\
+\}\nestcell \lastrow\nestrow
+\pard\intbl\itap1\pardeftab720\sa259
+
+\f2 \cf0 Output:\
+\pard\intbl\itap1\pardeftab720
+
+\f4\fs24 \cf0 \cb8 Spiral Order traversal of binary tree is\
+1 2 3 4 5 6 7
+\f0\fs26 \cb1 \cell \lastrow\row
+}
