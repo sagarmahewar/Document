@@ -134,7 +134,7 @@ IMP : The fourth and final type of synchronization object is the semaphore. Even
 
 MFC represents semaphores with instances of the class CSemaphore. The statement
 
-CSemaphore g_semaphore (3, 3);
+CSemaphore g_semaphore (3, 3, OptionParam_SemaphoreName, OptionParam_SECURITY_ATTRIBUTES);
 
 constructs a semaphore object that has an initial resource count of 3 (parameter 1) and a maximum resource count of 3 (parameter 2). If the semaphore will be used to synchronize threads in different processes, you should include a third parameter assigning the semaphore a name. An optional fourth parameter points to a SECURITY_ATTRIBUTES structure (default=NULL). Each thread that accesses a resource controlled by a semaphore can do so like this:
 

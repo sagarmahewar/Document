@@ -51,32 +51,51 @@ Application logic
 
 
 
-The DLL entry point
+The DLL entry point : 
 
 When you create a DLL, you can optionally specify an entry point function. The entry point function is called when processes or threads attach themselves to the DLL or detached themselves from the DLL. You can use the entry point function to initialize data structures or to destroy data structures as required by the DLL. Additionally, if the application is multithreaded, you can use thread local storage (TLS) to allocate memory that is private to each thread in the entry point function. The following code is an example of the DLL entry point function.
 
-BOOL APIENTRY DllMain(
-HANDLE hModule,	// Handle to DLL module
+
+
+BOOL APIENTRY DllMain(	
+HANDLE hModule,		// Handle to DLL module
 	DWORD ul_reason_for_call,
-	LPVOID lpReserved ) // Reserved
+	
+			LPVOID lpReserved ) 	// Reserved
+
 {
+	
 	switch ( ul_reason_for_call )
+	
 	{
+		
 		case DLL_PROCESS_ATTACHED:
 		// A process is loading the DLL.
-		break;
+		
+			break;
+		
 		case DLL_THREAD_ATTACHED:
 		// A process is creating a new thread.
-		break;
+		
+			break;
+		
 		case DLL_THREAD_DETACH:
-		// A thread exits normally.
-		break;
+			// A thread exits normally.
+		
+			break;
+		
 		case DLL_PROCESS_DETACH:
 		// A process unloads the DLL.
-		break;
+		
+			break;
+	
 	}
+	
 	return TRUE;
+
 }
+
+
 When the entry point function returns a FALSE value, the application will not start if you are using load-time dynamic linking. If you are using run-time dynamic linking, only the individual DLL will not load.
 
 The entry point function should only perform simple initialization tasks and should not call any other DLL loading or termination functions. For example, in the entry point function, you should not directly or indirectly call the LoadLibrary function or the LoadLibraryEx function. Additionally, you should not call the FreeLibrary function when the process is terminating.
@@ -96,11 +115,18 @@ To export DLL functions, you can either add a function keyword to the exported D
 
 To use a function keyword, you must declare each function that you want to export with the following keyword:
 
- __declspec(dllexport)
+ 
+
+	__declspec(dllexport)
+
+
 
 To use exported DLL functions in the application, you must declare each function that you want to import with the following keyword:
 
- __declspec(dllimport)
+ 
+	__declspec(dllimport)
+
+
 
 Typically, you would use one header file that has a define statement and an ifdef statement to separate the export statement and the import statement. 
 
@@ -118,7 +144,7 @@ LIBRARY "sampleDLL"
 EXPORTS
   
 
-HelloWorld
+	HelloWorld
 
 
 
@@ -127,43 +153,65 @@ HelloWorld
 
 
 
-Write Sample DLL
+Write Sample DLL 
 
-In Microsoft Visual C++ 6.0, you can create a DLL by selecting either the Win32 Dynamic-Link Library project type or the MFC AppWizard (dll) project type.
+In Microsoft Visual C++ 6.0 : 
+
+You can create a DLL by selecting either the Win32 Dynamic-Link Library project type or the MFC AppWizard (dll) project type.
 
 The following code is an example of a DLL that was created in Visual C++ by using the Win32 Dynamic-Link Library project type.
 
-// SampleDLL.cpp
-//
+
+
+// SampleDLL.cpp//
+
 
 #include "stdafx.h"
+
 #define EXPORTING_DLL
+
 #include "sampleDLL.h"
 
+
 BOOL APIENTRY DllMain( HANDLE hModule, 
+
                        DWORD  ul_reason_for_call, 
-                       LPVOID lpReserved
-					 )
+     	               LPVOID lpReserved)
+
 {
-    return TRUE;
-}
+    
+	return TRUE;
+}
 
 void HelloWorld()
+
 {
-   MessageBox( NULL, TEXT("Hello World"), 
-			TEXT("In a DLL"), MB_OK);
-}
+   
+	MessageBox( NULL, TEXT("Hello World"),TEXT("In a DLL"), MB_OK);
+
+}	
+
+
 
 // File: SampleDLL.h
 //
-#ifndef INDLL_H
-#define INDLL_H
 
-#ifdef EXPORTING_DLL
-extern __declspec(dllexport) void HelloWorld() ;
-#else
-extern __declspec(dllimport) void HelloWorld() ;
-#endif
+
+#ifndef INDLL_H
+
+	#define INDLL_H
+
+
+	#ifdef EXPORTING_DLL
+
+		extern __declspec(dllexport) void HelloWorld() ;
+
+	#else
+
+		extern __declspec(dllimport) void HelloWorld() ;
+
+	#endif
+
 
 #endif
 
@@ -222,22 +270,25 @@ DLLPROC HelloWorld;
 
 BOOL fFreeDLL;
 
+
 hinstDLL = LoadLibrary("sampleDLL.dll");
 
 if(hinstDLL != NULL)
 
 {
     
-  HelloWorld = (DLLPROC) 
-  GetProcAddress(hinstDLL, "HelloWorld");
+  	HelloWorld = (DLLPROC) GetProcAddress(hinstDLL, "HelloWorld");
     
-  if (HelloWorld != NULL)
+  
+	if (HelloWorld != NULL)
         
-    (HelloWorld);
+    		(HelloWorld);
 
     
-  fFreeDLL = FreeLibrary(hinstDLL);
+  	fFreeDLL = FreeLibrary(hinstDLL);
+
 }
+
 
 
 ...
@@ -249,11 +300,11 @@ When you compile and link the SampleDLL application, the Windows operating syste
 
 -The current folder
 
-The Windows system folder
+-The Windows system folder
 
 
 NOTE: The GetSystemDirectory function returns the path of the Windows system folder.
-The Windows folder
+
 NOTE: The GetWindowsDirectory function returns the path of the Windows folder.
 
 
@@ -266,11 +317,21 @@ Registering Windows DLL
 
 In order for a DLL to be used, it has to be registered by having appropriate references entered in the Registry. It sometimes happens that a Registry reference gets corrupted and the functions of the DLL cannot be used anymore. The DLL can be re-registered by opening Start-Run and entering the command
 
+ 
+
 regsvr32 somefile.dll
+
+
 This command assumes that somefile.dll is in a directory or folder that is in the PATH. Otherwise, the full path for the DLL must be used. A DLL file can also be unregistered by using the switch "/u" as shown below.
 
+
+
 regsvr32 /u somefile.dll
+
+
 This can be used to toggle a service on and off.
+
+
 
 ———————————————————————————————————————————————————————————————————————————————
 
@@ -278,31 +339,62 @@ This can be used to toggle a service on and off.
 
 Tools for Windows DLL
 
+
+
 Several tools are available to help you troubleshoot DLL problems. The following tools are some of these tools.
 
-Dependency Walker
+
+
+1] Dependency Walker : 
 
 The Dependency Walker tool ( depends.exe ) can recursively scan for all dependent DLLs that are used by a program. When you open a program in Dependency Walker, Dependency Walker performs the following checks:
 
-Dependency Walker checks for missing DLLs.
-Dependency Walker checks for program files or DLLs that are not valid.
+
+- Dependency Walker checks for missing DLLs.
+
+- Dependency Walker checks for program files or DLLs that are not valid.
+- 
 Dependency Walker checks that import functions and export functions match.
-Dependency Walker checks for circular dependency errors.
+
+- Dependency Walker checks for circular dependency errors.
+- 
 Dependency Walker checks for modules that are not valid because the modules are for a different operating system.
+
+
 By using Dependency Walker, you can document all the DLLs that a program uses. This may help prevent and correct DLL problems that may occur in the future. Dependency Walker is located in the following directory when you install Microsoft Visual Studio 6.0:
+
+
 
 drive\Program Files\Microsoft Visual Studio\Common\Tools
 
-DLL Universal Problem Solver
+
+
+2] DLL Universal Problem Solver : 
 The DLL Universal Problem Solver (DUPS) tool is used to audit, compare, document, and display DLL information. The following list describes the utilities that make up the DUPS tool:
 
+
+
 Dlister.exe
+:
+
 This utility enumerates all the DLLs on the computer and logs the information to a text file or to a database file.
-Dcomp.exe
+
+
+Dcomp.exe :
+
+
 This utility compares the DLLs that are listed in two text files and produces a third text file that contains the differences.
+
+
 Dtxt2DB.exe
+
+
 This utility loads the text files that are created by using the Dlister.exe utility and the Dcomp.exe utility into the dllHell database.
+
+
 DlgDtxt2DB.exe
+
+
 This utility provides a graphical user interface (GUI) version of the Dtxt2DB.exe utility.
 
 
@@ -313,17 +405,31 @@ This utility provides a graphical user interface (GUI) version of the Dtxt2DB.ex
 
 Tips for Windows DLL
 
-Keep in mind the following tips when writing your DLL:
+ : Keep in mind the following tips when writing your DLL:
 
-Make sure you use the proper calling convention (C or stdcall).
-Know the correct order of the arguments passed to the function.
-NEVER resize arrays or concatenate strings using the arguments passed directly to a function. Remember, the parameters you pass are LabVIEW data. Changing array or string sizes may result in a crash by overwriting other data stored in LabVIEW memory. You MAY resize arrays or concatenate strings if you pass a LabVIEW Array Handle or LabVIEW String Handle and are using the Visual C++ compiler or Symantec compiler to compile your DLL.
+
+
+- Make sure you use the proper calling convention (C or stdcall).
+
+- Know the correct order of the arguments passed to the function.
+
+- NEVER resize arrays or concatenate strings using the arguments passed directly to a function. 
+- Remember, the parameters you pass are LabVIEW data. Changing array or string sizes may result in a crash by overwriting other data stored in LabVIEW memory. You MAY resize arrays or concatenate strings if you pass a LabVIEW Array Handle or LabVIEW String Handle and are using the Visual C++ compiler or Symantec compiler to compile your DLL.
+- 
 When passing strings to a function, remember to select the correct type of string to pass . C or Pascal or LabVIEW string Handle.
 Remember, Pascal strings are limited to 255 characters in length.
-Remember, C strings are NULL terminated. If your DLL function returns numeric data in a binary string format (for example, via GPIB or the serial port), it may return NULL values as part of the data string. In such cases, passing arrays of short (8-bit) integers is most reliable.
+Remember, C strings are NULL terminated. - If your DLL function returns numeric data in a binary string format (for example, via GPIB or the serial port), it may return NULL values as part of the data string. In such cases, passing arrays of short (8-bit) integers is most reliable.
 If you are working with arrays or strings of data, ALWAYS pass a buffer or array that is large enough to hold any results placed in the buffer by the function unless you are passing them as LabVIEW handles, in which case you can resize them using CIN functions under Visual C++ or Symantec compiler.
-Remember to list DLL functions in the EXPORTS section of the module definition file if you are using _stdcall.
-Remember to list DLL functions that other applications call in the module definition file EXPORTS section or to include the _declspec (dllexport) keyword in the function declaration.
-If you use a C++ compiler, remember to export functions with the extern .C.{} statement in your header file in order to prevent name mangling.
+
+- Remember to list DLL functions in the EXPORTS section of the module definition file if you are using _stdcall.
+
+- Remember to list DLL functions that other applications call in the module definition file EXPORTS section or to include the 
+
+	_declspec (dllexport) 
+
+keyword in the function declaration.
+
+- If you use a C++ compiler, remember to export functions with the extern .C.{} statement in your header file in order to prevent name mangling.
+- 
 If you are writing your own DLL, you should not recompile a DLL while the DLL is loaded into memory by another application (for example, your VI). Before recompiling a DLL, make sure that all applications making use of the DLL are unloaded from memory. This ensures that the DLL itself is not loaded into memory. You may fail to rebuild correctly if you forget this and your compiler does not warn you.
 Test your DLLs with another program to ensure that the function (and the DLL) behave correctly. Testing it with the debugger of your compiler or a simple C program in which you can call a function in a DLL will help you identify whether possible difficulties are inherent to the DLL or LabVIEW related.
