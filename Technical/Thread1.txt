@@ -1,0 +1,480 @@
+BOOST THREAD
+
+==> Overview
+A boost::thread object represents a single thread of execution, as you would normally create and manage using your operating system specific interfaces. For example: on POSIX systems a Boost thread uses the Pthreads API and on Win32 it uses the native CreateThread and related calls. Because Boost abstracts away all the platform-specific code, you can easily write sophisticated and portable code that runs across all major platforms. 
+
+A boost::thread object is normally constructed by passing the threading function or method it is to run. There are actually a number of different ways to do so. I cover the main thread creation approaches below.
+
+
+==> Detach 
+There even exists a method called detach() that allows to decouple a variable of type boost::thread from its corresponding thread. Certainly, methods such as join() cannot be called afterwards since the variable does not represent a valid thread any longer.
+
+
+==> Interrupt
+#include <boost/thread.hpp> 
+#include <iostream> 
+
+void wait(int seconds) 
+{ 
+  boost::this_thread::sleep(boost::posix_time::seconds(seconds)); 
+} 
+
+void thread() 
+{ 
+  try 
+  { 
+    for (int i = 0; i < 5; ++i) 
+    { 
+      wait(1); 
+      std::cout << i << std::endl; 
+    } 
+  } 
+  catch (boost::thread_interrupted&) 
+  { 
+  } 
+} 
+
+int main() 
+{ 
+  boost::thread t(thread); 
+  wait(3); 
+  t.interrupt(); 
+  t.join(); 
+} 
+
+Calling interrupt() on a thread object interrupts the corresponding thread. In this context, interrupted means that an exception of type boost::thread_interrupted is thrown inside the thread. However, this only happens once the thread reaches an interruption point.
+
+Simply calling interrupt() does not cause anything if the given thread does not contain any interruption points. Whenever a thread reaches an interruption point it will check whether the interrupt() method has been called. Only if it has, a boost::thread_interrupted exception is thrown accordingly.
+
+Boost.Thread defines a series of interruption points such as the sleep() function. Since sleep() is called five times in the example, the thread checks five times whether or not it was interrupted. Between the calls to sleep(), the thread can not be interrupted though.
+
+Once the program is executed, it will only print three numbers to the standard output stream. This is caused by calling the interrupt() method after three seconds inside main(). Thus, the corresponding thread is interrupted and throws a boost::thread_interrupted exception accordingly. While the exception is correctly caught inside the thread, the catch handler is empty though. Since the thread() function returns after the handler, the thread is terminated as well. This in turn will also terminate the entire application since main() simply waited for the thread to terminate using the join() method.
+
+Boost.Thread defines about ten interruption points including the mentioned sleep() function. Thanks to these interruption points, threads can easily be interrupted in a timely manner. However, they may not always be the best choice since an interruption point must be reached first in order to check for the boost::thread_interrupted exception.
+
+
+==> Code Examples
+All the code examples are provided in a single download below, which you can use for any purpose, no strings attached. (The usual disclaimer is that no warranties apply!) And just as Boost runs on many platforms (ie. Windows, Unix/Linux, Mac OS X and others) the example code should be similarly portable.
+	•	Download boost_threads_eg1.zip (4kB)
+
+
+==> Type 1: A Thread Function
+The simplest threading scenario is where you have a simple (C-style) function that you want to run as a separate thread. You just pass the function to the boost::thread constructor, and it will start running. You can then wait for the thread to complete by calling join(), as shown above.
+
+#include <iostream>
+#include <boost/thread.hpp>
+#include <boost/date_time.hpp>
+
+void workerFunc()
+{
+    boost::posix_time::seconds workTime(3);
+
+    std::cout << "Worker: running" << std::endl;
+
+    // Pretend to do something useful...
+    boost::this_thread::sleep(workTime);
+
+    std::cout << "Worker: finished" << std::endl;
+}
+
+int main(int argc, char* argv[])
+{
+    std::cout << "main: startup" << std::endl;
+
+    boost::thread workerThread(workerFunc);
+
+    std::cout << "main: waiting for thread" << std::endl;
+
+    workerThread.join();
+
+    std::cout << "main: done" << std::endl;
+
+    return 0;
+}
+
+When you run the program, you should see output similar to the following:
+
+main: startup
+main: waiting for thread
+Worker: running
+Worker: finished
+main: done
+
+
+==> Type 2: Function with Arguments
+Let’s say your thread function had the following signature:
+
+void workerFunc(const char* msg, unsigned delaySecs) //...
+You simply pass the arguments to the thread constructor after the name of the thread function, thus:
+
+boost::thread workerThread(workerFunc, "Hello, boost!", 3);
+
+
+==> Type 3: Functor
+A functor is a fancy name for an object that can be called just like a function. The class defines a special method by overloading the operator() which will be invoked when the functor is called. In this way, the functor can encapsulate the thread’s context and still behave like a thread function. (Functors are not specific to threads, they are simply very convenient.)
+This is what our functor looks like:
+
+class Worker
+{
+public:
+
+    Worker(unsigned N, float guess, unsigned iter)
+            : m_Number(N),
+              m_Guess(guess),
+              m_Iterations(iter)
+    {
+    }
+
+    void operator()()
+    {
+        std::cout << "Worker: calculating sqrt(" << m_Number
+                  << "), itertations = "
+                  << m_Iterations << std::endl;
+
+        // Use Newton's Method
+        float   x;
+        float   x_last = m_Guess;
+
+        for (unsigned i=0; i < m_Iterations; i++)
+        {
+            x = x_last - (x_last*x_last\-m_Number)/
+                    (2\*x_last);
+            x_last = x;
+
+            std::cout << "Iter " << i << " = "
+                  << x << std::endl;
+        }
+
+        std::cout << "Worker: Answer = " << x << std::endl;
+    }
+
+private:
+
+    unsigned    m_Number;
+    float       m_Guess;
+    unsigned    m_Iterations;
+}
+
+First we create our callable object, constructing it with any necessary arguments as normal. Then you pass the instance to the boost::thread constructor, which will invoke the operator()() method on your functor. This becomes the new thread, and runs just like any other thread, with the added benefit that it has access to the object’s context and other methods. This approach has the benefit of wrapping up a thread into a convenient bundle.
+
+
+int main(int argc, char* argv[])
+{
+    std::cout << "main: startup" << std::endl;
+
+    Worker w(612, 10, 5);
+    boost::thread workerThread(w);
+
+    std::cout << "main: waiting for thread" << std::endl;
+
+    workerThread.join();
+
+    std::cout << "main: done" << std::endl;
+
+    return 0;
+}
+
+Note: A very important consideration when using functors with boost threads is that the thread constructor takes the functor parameter by value, and thus makes a copy of the functor object. Depending on the design of your functor object, this may have unintended side-effects. Take care when writing functor objects to ensure that they can be safely copied.
+
+———————————————————————————————————————————————————————————————————————————
+
+Threading Challenges
+
+Once you have more than one thread running in a process, you have to deal with the problems and challenges that threads can introduce. So, before delving into the mechanics of how to use mutexes and other threading constructs, we look at what can go wrong – and how to avoid it.
+
+==> Shared State
+
+There is a simple solution to most major threading problems: have no shared state. By shared state, I mean any data or resource (such as file handle, socket, graphics context, queue, buffer, etc) that is used by more than one thread at the same time. If two threads are truly independent, they can safely run concurrently without care or consideration. We wouldn’t need sophisticated mechanisms for synchronisation if there’s nothing to sync over. Unfortunately, this restriction is not at all practical or realistic. And as soon as you introduce shared state, you have to worry about atomicity, consistency, race conditions, and all sorts of issues.
+
+So one of the first design considerations for concurrent systems is to try to minimise the amount of shared state between threads. The less shared state, the less complexity there is to manage, and the less overhead imposed. Locks that protect shared resources can harm performance: each lock is a region that enforces sequential access, and thus reduces the opportunities for concurrent scheduling.
+
+Simply put, any resource shared between more than one thread needs to be protected by a mutex, such that access is serialised.
+
+When considering scalability, the theoretical maximum speedup of N cores is always less than N times, due to scheduling and synchronisation overheads. Thus the most efficient algorithm designs consider these issues up front.
+
+
+==> Problem: Atomicity
+
+An operation is atomic if the operation completes without interruption. It is never partially complete, which may leave the system or data in an inconsistent or invalid state. Atomic operations come up all over the place, and even things that we might think are atomic (ie. a single line in your source) probably isn’t. In databases, we use SQL transactions to ensure operations are atomic, such that a related set of changes are never partially applied.
+
+The classic example of an atomic operation in a database is a bank transfer. You decide to pay your landlord by direct deposit, and transfer $1200 to their account. The normal sequence of operations is:
+
+Ensure you have sufficient funds
+Ensure the receiving account number is valid
+Withdraw the $1200 in funds from your account
+Deposit the $1200 in the landlord’s account
+Now the first two steps are really preconditions, and while they are necessary for the entire operation’s success, if the operation was cancelled after step 1 or step 2, there would be no harm done, and nothing changed. But once the money comes out of your account after step 3, you absolutely want step 4 to complete, otherwise you are $1200 out of pocket and you still owe the rent! So steps 3 and 4 must either both happen successfully, or not at all. If the network goes down between steps 3 and 4 such that the deposit cannot complete, you want to undo the withdrawal and try again later. Steps 3 and 4 must be performed atomically.
+
+While this example traditionally applies to database operations (and is thus resolved on-disk), the same concept applies to in-memory operations that must be atomic. A mutex (for “mutual exclusion”) or critical section can be used to serialise access to resources within a region of code that must run as an atomic operation. We would lock the mutex before the transaction, and unlock it afterwards.
+
+
+==> Problem: Race Conditions
+
+A race condition is a general term for a class of problems, whereby the result of an operation is at the mercy of the timing of concurrent events (typically unknown or effectively random). This is bad because your program becomes non-deterministic – it may not always produce the correct result! They represent one of the most subtle and difficult to debug problems in software development, which is one of the main reasons why multi-threaded programming is considered difficult.
+
+
+Now imagine two threads, which are both using a shared object. If both threads happen to call the method that performs the increment method at the same time, one thread could be preempted in the middle, such that the instructions are interleaved. So for threads A and B incrementing the sequence number, thus:
+
+Thread	Instruction			m_SequenceNumber	Register
+A	LOAD m_SequenceNumber, R0	234			234
+A	INCR R0				234			235
+B	LOAD m_SequenceNumber, R1	234			234
+B	INCR R1				234			235
+B	STORE R1, m_SequenceNumber	235			235
+A	STORE R0, m_SequenceNumber	235			235
+
+So, instead of the sequence number being incremented twice, and being 236 as we would expect, the sequence number is only 235. This is a subtle, nasty and rare bug and could be very difficult to track down for the unprepared.
+
+
+==> Problem: Deadlocks
+
+In a non-trivial application, there may be several threads and numerous mutexes. When more than one thread locks more than one mutex, there arises the potential for a condition known as a deadlock. This is where one thread is holding a lock while waiting for another to become available, while a second thread is holding the second lock and waiting for the first lock to become available. Since they are both waiting for each other to finish, neither can run. This deadlocked situation can be more involved, whereby several threads form a ring of holding and waiting for locks. This is illustrated as follows, first in code then as a diagram:
+
+void threadA()
+{
+    while (running)
+    {
+        mutexOne.lock();
+        mutexTwo.lock();
+        processStuff();
+        mutexOne.unlock();
+        mutexTwo.unlock();
+    }
+}
+void threadB()
+{
+    while (running)
+    {
+        mutexTwo.lock();
+        mutexOne.lock();
+        processStuff();
+        mutexTwo.unlock();
+        mutexOne.unlock();
+    }
+}
+
+Fortunately, the problem of deadlocks can largely be avoided by consistently locking mutexes in the same order, and unlocking them in reverse order.
+
+
+==> Problem: Exceptions
+
+Exceptions in C++ can be a very effective mechanism for error handling. However, like many C++ features, care must be taken, especially in threads. Because a thread is destroyed when the thread function returns, an uncaught exception can cause the entire thread to exit, without warning or notice. So if you have a thread that mysteriously disappears, an uncaught exception is a likely culprit.
+
+As with non-threaded code, you should always catch the most specific exception type that you are able to handle. But if you wish to avoid your thread being killed, you should add a top-level try-catch block. At this point, depending on the application, you may simply log the uncaught exception then exit, or you may resume thread processing (but only if safe to do so!).
+
+A skeleton thread function might look something like:
+
+void processThread()
+{
+    while(keepProcessing)
+    {
+        try
+        {
+            // Do actual work
+        }
+        // Catch more specific exceptions first if you can
+        catch (std::exception& exc)
+        {
+            log("Uncaught exception: " + exc.what());
+            // Maybe return here?
+        }
+    }
+}
+
+Just as an errant exception can cause havoc with threads running, they can also cause problems with mutexes. The next article shows how to use a lock guard to ensure mutexes are unlocked, even if an exception is thrown.
+
+
+==> Other Problems
+
+Just to reinforce the idea that multithreaded programming is not a trivial undertaking, there are even more traps for the unwary, for which there is not sufficient time to delve into here. Issues such as starvation, priority inversion, and high scheduling latency are all considerations for concurrent programming. It is definitely worth consulting a good book or three.
+
+
+
+———————————————————————————————————————————————————————————————————————————
+
+1] As far as Windows is concerned, all threads are alike. MFC, however, distinguishes between two types of threads: user interface (UI) threads and worker threads.
+
+2] The difference between the two is that UI threads have message loops and worker threads don't. UI threads can create windows and process messages sent to those windows. Worker threads perform background tasks that receive no direct input from the user and therefore don't need windows and message loops.
+
+3] The best way to launch a thread in an MFC application is to call AfxBeginThread. MFC defines two different versions of AfxBeginThread: one that starts a UI thread and another that starts a worker thread. AfxBeginThread creates a new CWinThread object, launches a thread and attaches it to the CWinThread object, and returns a CWinThread pointer. The statement
+
+CWinThread* pThread = AfxBeginThread (ThreadFunc, &threadInfo);
+
+4] starts a worker thread and passes it the address of an application-defined data structure (&threadInfo) that contains input to the thread. ThreadFunc is the thread functionthe function that gets executed when the thread itself begins to execute. A very simple thread function that spins in a loop eating CPU cycles and then terminates looks like this:
+
+UINT ThreadFunc (LPVOID pParam)
+{
+    UINT nIterations = (UINT) pParam;
+    for (UINT i=0; i<nIterations; i++);
+    return 0;
+}
+
+5] The worker thread form of AfxBeginThread accepts as many as four additional parameters that specify the thread's priority, stack size, creation flags, and security attributes. 
+
+CWinThread* AfxBeginThread (AFX_THREADPROC pfnThreadProc,
+    LPVOID pParam, int nPriority = THREAD_PRIORITY_NORMAL,
+    UINT nStackSize = 0, DWORD dwCreateFlags = 0,
+    LPSECURITY_ATTRIBUTES lpSecurityAttrs = NULL)
+
+-nPriority specifies the thread's execution priority. nPriority doesn't specify an absolute priority level. It specifies a priority level relative to the priority level of the process to which the thread belongs. The default is THREAD_PRIORITY_NORMAL, You can change a thread's priority level at any time with CWinThread::SetThreadPriority.
+
+-The nStackSize parameter passed to AfxBeginThread specifies the thread's maximum stack size. In the Win32 environment, each thread receives its own stack. The 0 default nStackSize value allows the stack to grow as large as 1 MB. This doesn't mean that every thread requires a minimum of 1 MB of memory; it means that each thread is assigned 1 MB of address space in the larger 4-GB address space in which 32-bit Windows applications execute. 
+
+-dwCreateFlags can be one of two values. The default value 0 tells the system to start executing the thread immediately. If CREATE_SUSPENDED is specified instead, the thread starts out in a suspended state and doesn't begin running until another thread (usually the thread that created it) calls CWinThread::ResumeThread on the suspended thread, as demonstrated here:
+
+CWinThread* pThread = AfxBeginThread (ThreadFunc, &threadInfo, THREAD_PRIORITY_NORMAL, 0, CREATE_SUSPENDED);            
+pThread->ResumeThread (); // Start the thread
+
+Sometimes it's useful to create a thread but defer its execution until later. The CREATE_SUSPENDED flag is your mechanism for enacting delayed execution.
+
+-lpSecurityAttrs, is a pointer to a SECURITY_ATTRIBUTES structure that specifies the new thread's security attributes and also tells the system whether child processes should inherit the thread handle. The NULL default value assigns the new thread the same properties the thread that created it has.
+
+6] Suspending and Resuming Threads :
+A running thread can be suspended with CWinThread::SuspendThread and started again with CWinThread::ResumeThread. A thread can call SuspendThread on itself, or another thread can call SuspendThread for it. However, a suspended thread can't call ResumeThread to wake itself up;
+
+------------------------------------------------------------------------------------------------------
+
+WaitForSingleObject
+
+DWORD WINAPI WaitForSingleObject(
+  _In_  HANDLE hHandle,
+  _In_  DWORD dwMilliseconds
+);
+
+hHandle -
+A handle to the object. If this handle is closed while the wait is still pending, the function's behavior is undefined.
+The handle must have the SYNCHRONIZE access right.
+
+dwMilliseconds -
+The time-out interval, in milliseconds. If a nonzero value is specified, the function waits until the object is signaled or the interval elapses. If dwMilliseconds is zero, the function does not enter a wait state if the object is not signaled; it always returns immediately. If dwMilliseconds is INFINITE, the function will return only when the object is signaled.
+ 
+Return value -
+
+If the function succeeds, the return value indicates the event that caused the function to return. It can be one of the following values.
+
+
+WAIT_ABANDONED : The specified object is a mutex object that was not released by the thread that owned the mutex object before the owning thread terminated. Ownership of the mutex object is granted to the calling thread and the mutex state is set to nonsignaled.
+If the mutex was protecting persistent state information, you should check it for consistency.
+
+WAIT_OBJECT_0 : The state of the specified object is signaled.
+
+WAIT_TIMEOUT : The time-out interval elapsed, and the object's state is nonsignaled.
+
+WAIT_FAILED : The function has failed. To get extended error information, call GetLastError.
+
+------------------------------------------------------------------------------------------------------
+
+ThreadPool
+
+What is ThreadPool?
+Thread Pool is collection of Live, Reusable threads. 
+ 
+Why ThreadPool?
+There are many situation where we can use ThreadPool. Consider a Client-Server application in which server has to respond to multiple client at same time. This means multitasking. Server will need a set of certain no. of threads which will do reply to client.
+The big advantage of thread pool is that, it provides reusable thread. Though thread creation is very bulky process. It increases overhead. Suppose a new client send some data to server and Server has to respond. What will server do? It will create a new thread which will send data to client and then get killed or exited. Instead of creating thread on each client request we can keep collection of live thread. We will use any free thread which will send data to client. By that we will save a great overhead generated by creating threads multiple times. ...
+ 
+
+/****************************************************************************
+CThreadPoolMgr Initialize 
+Description : Creates threads. Thread limit is 5
+****************************************************************************/
+void CThreadPoolMgr::Initialize(int nThread)
+{
+    m_nThreadCount = nThread;
+ 
+    int nCounter = 0;
+    int nThreadCount = m_nThreadCount - 1;
+    
+    while( nCounter <= nThreadCount )
+    {
+        // Create objects in heap
+        m_ptrCThread[nCounter] = new CThread();
+ 
+        m_ptrCThread[nCounter]->CreateWorkerThread();
+        m_hThreadPool[nCounter] = m_ptrCThread[nCounter]->GetThreadHandle();
+        // Increment the counter
+        nCounter++;
+    }    
+}
+ 
+
+ 
+/****************************************************************************
+CThreadPoolMgr ShutDown 
+Description : Mark shutdown siganl and wait for each thread to end 
+****************************************************************************/
+void CThreadPoolMgr::ShutDown()
+{
+    int Count = 0;
+ 
+    while(Count <= (m_nThreadCount - 1))
+    {
+        m_ptrCThread[Count]->SignalShutDownEvent();
+        
+        Count++;
+    }
+ 
+    // Check if all threads ended successfully
+    DWORD dwWaitResult = WaitForMultipleObjects( GetThreadCount(), m_hThreadPool, TRUE, INFINITE);
+    
+    switch(dwWaitResult)
+    {
+    case WAIT_OBJECT_0:
+        {
+            cout << "All threads are ended.\n";
+            // Close all handles 
+            Count = 0;
+            while( Count <= (m_nThreadCount - 1))
+            {
+                m_ptrCThread[Count]->ReleaseHandles();
+                delete m_ptrCThread[Count];
+                Count++;
+            }
+            
+            break;
+        }
+ 
+    default:
+        cout << "Wait Error: " << GetLastError() << "\n";
+    }
+    
+}
+
+What is DeadLock
+
+"Deadlock describes a situation where two or more threads are blocked forever, waiting for each other. Here's an example. Alphonse and Gaston are friends, and great believers in courtesy. A strict rule of courtesy is that when you bow to a friend, you must remain bowed until your friend has a chance to return the bow. Unfortunately, this rule does not account for the possibility that two friends might bow to each other at the same time."
+What is Race Condition
+A race condition occurs when two or more threads can access shared data and they try to change it at the same time. Because the thread scheduling algorithm can swap between threads at any time, you don't know the order in which the threads will attempt to access the shared data. Therefore, the result of the change in data is dependent on the thread scheduling algorithm, i.e. both threads are "racing" to access/change the data.
+
+Thread Safety Issue for Singletons
+Remember, thread-safety issue for Singletons would occur only rarely, as follows (rarely, but still catastrophic! so you still need to design for it):
+	1.	No client code has called GetInstance() so far, and now two threads simultaneously call GetInstance(), and
+	2.	Context switch between the two calling threads happen on the exact line of code at:
+
+         if (m_pOnlyOneInstance == NULL)
+During further calls to GetInstance(), the MySingleton object is already created and would be returned. But it's still a serious issue, as we've instantiated MySingleton twice.
+Solution
+We can achieve good performance and lazy instantiation for Singletons (which were the short-comings of Solutions 1 and 2 for the short-term memory loss readers out there).
+You can achieve this by moving around code in Solution 1.
+Do go back to Solution 1 and think about how this can be done before proceeding further.
+Deep Dive into Solution 3
+ Collapse | Copy Code
+MySingleton * GetInstance()
+{
+      if (m_pOnlyOneInstance == NULL)
+      {
+            EnterCriticalSection();
+            if (m_pOnlyOneInstance == NULL)
+            // Solution 1 and 2 gaps addressed by moving
+            // critical section block and by re-doing this check!
+            {
+                  m_pOnlyOneInstance = new MySingleton();
+            }
+            LeaveCriticalSection();
+      }
+      return m_pOnlyOneInstance;
+}
+With Solution 3, you do not use a critical section every time a client calls GetInstance(), and we achieve Lazy Instantiation. The MySingleton object is created only when the client calls GetInstance().
+Also, a Critical Section is used only during instantiation, and for handling the rare (but catastrophic!) thread-safety issue during instantiation and the race condition between two threads. We do not enter a critical section block every time the client calls GetInstance().
+Congratulations! You’ve just learnt Double-Checked Locking, the formal name for Solution 3.
+

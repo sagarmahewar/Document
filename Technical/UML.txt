@@ -1,0 +1,45 @@
+==>
+UML is a standard language for specifying, visualizing, constructing, and documenting the artifacts of software systems.
+UML was created by Object Management Group and UML 1.0 specification draft was proposed to the OMG in January 1997.
+
+-UML stands for Unified Modeling Language.
+-UML is different from the other common programming languages like C++, Java, COBOL etc.
+-UML is a pictorial language used to make software blue prints.
+
+
+==>
+OO Analysis and Design
+Purpose of OO analysis and design can described as:
+
+-Identifying the objects of a system.
+-Identify their relationships.
+-Make a design which can be converted to executables using OO languages.
+
+OO Analysis --> OO Design --> OO implementation using OO languages
+
+
+==>
+Building blocks of UML
+The building blocks of UML can be defined as:
+	•	Things
+	•	Relationships
+	•	Diagrams
+
+
+
+UML Diagrams:
+
+UML includes the following nine diagrams
+
+1] Class diagram
+2] Object diagram
+3] Use case diagram
+4] Sequence diagram
+5] Collaboration diagram
+6] Activity diagram
+7] Statechart diagram
+8] Deployment diagram
+9] Component diagram
+
+We would discuss all these diagrams in subsequent chapters of this tutorial
+

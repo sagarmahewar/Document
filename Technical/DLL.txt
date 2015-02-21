@@ -1,4 +1,4 @@
-﻿
+
 Dynamic linking is a mechanism that links applications to libraries at run time. The libraries remain in their own files and are not copied into the executable files of the applications. DLLs link to an application when the application is run, rather than when it is created. DLLs may contain links to other DLLs.
 
 Many times, DLLs are placed in files with different extensions such as .EXE, .DRV or .DLL.
@@ -39,9 +39,8 @@ If the initial startup performance of the application is important, you should u
 
 - Ease of use
  : In load-time dynamic linking, the exported DLL functions are like local functions. This makes it easy for you to call these functions.
-- 
 
-Application logic
+- Application logic
  : In run-time dynamic linking, an application can branch to load different modules as required. This is important when you develop multiple-language versions.
 
 
