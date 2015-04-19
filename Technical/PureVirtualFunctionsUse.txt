@@ -64,7 +64,7 @@ public:
    virtual void pure_virtual() = 0 { }; //ERROR (except in MS VC++)
 };
 
-The code above is considered ill formed by the C++ 03 standard in Clause 10.4, paragraph 2, which says that ìa function declaration cannot provide both a pure-specifier and a definitionî.
+The code above is considered ill formed by the C++ 03 standard in Clause 10.4, paragraph 2, which says that ìa function declaration cannot provide both a pure-specifier and a definition.
 
 Running the code above will actually result in a compiler error, because a pure virtual function can not have a definition within the declaration of the pure virtual function.
 
@@ -77,13 +77,13 @@ Any class that has at least one pure virtual function is called an abstract clas
 
 SomeClass aClass;  //Error!  SomeClass is abstract
 
-This also means that any class that derives from an abstract class must override the definition of the pure virtual function in the base class, and if it doesnít then the derived class becomes an abstract class as well.
+IMPORTANT : This also means that any class that derives from an abstract class must override the definition of the pure virtual function in the base class, and if it doesn’t then the derived class becomes an abstract class as well.
 
 ----------------------------------------------------------------------
 
 When should pure virtual functions be used in C++?
 
-In C++, a regular, "non-pure" virtual function provides a definition, which means that the class in which that virtual function is defined does not need to be declared abstract. You would want to create a pure virtual function when it doesnít make sense to provide a definition for a virtual function in the base class itself, within the context of inheritance.
+In C++, a regular, "non-pure" virtual function provides a definition, which means that the class in which that virtual function is defined does not need to be declared abstract. You would want to create a pure virtual function when it doesn’t make sense to provide a definition for a virtual function in the base class itself, within the context of inheritance.
 
 An example of when pure virtual functions are necessary
 

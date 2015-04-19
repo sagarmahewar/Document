@@ -3,7 +3,7 @@
 {\colortbl;\red255\green255\blue255;\red191\green191\blue191;\red192\green192\blue192;\red10\green82\blue135;
 \red109\green109\blue109;\red255\green255\blue0;}
 {\info
-{\keywords cursorLocation=78982}}\vieww25600\viewh14240\viewkind0\viewscale181
+{\keywords cursorLocation=9156}}\vieww25600\viewh14240\viewkind0\viewscale181
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs16 \cf0 STL \'96 Array, Vector, Map, List differences\
@@ -115,9 +115,10 @@ Q25. Why do C++ compilers need name mangling? \
 A25. Name mangling is the rule according to which C++ changes function's name into function signature before passing that function to a linker. This is how the linker differentiates between different functions with the same name. \
 \
 ** Then how it clears the name mangling problem with extern \'93C\'94\
---It just turn off  \'93Name mangling\'94 for this function.\
+--It just turn off  \'93Name mangling\'94 for this function. \
 \
 ? Then how it differentiate between different function with same name.\
+--Because in C you do not support the FUNCTION OVERLOADING as a feature, so no need of Name Mangling.\
 \
 Q26. What is the difference between a pointer and a reference? \
 A26. A reference must always refer to some object and, therefore, must always be initialized; pointers do not have such restrictions. A pointer can be reassigned to point to different objects while a reference always refers to an object with which it was initialized.\
@@ -1026,12 +1027,15 @@ When the address of an object is used after its lifetime is over, dangling point
 \itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
 \clvertalc \clshdrawnil \clwWidth17720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
 \pard\intbl\itap2\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
-\cf0 84. Do you think the following code is fine? If not, what is the problem?\'a0\
+\cf0 84.A Do you think the following code is fine? If not, what is the problem?\'a0\
 T *p = 0; \
 delete p;\
 No, the code has a problem. The program will crash in an attempt to delete a null pointer.\'a0\'a0\nestcell \lastrow\nestrow
 \pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0 \
+84.B Can we delete a pointer twice ?\
+You get undefined behaviour if you try to delete an object through a pointer more that once.\
+This means that pretty much anything can happen from 'appearing to work' to 'crashing' or something completely random.\
 \
 
 \itap2\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
@@ -1051,14 +1055,23 @@ set : A set is an STL container that stores values and permits easy lookup. For 
                         S.insert("foo");.\uc0\u8232 A set may not contain more than one element with the same key, so insert won't add anything if S already contains the string "foo"; instead it just looks up the old element. The return value includes a status code indicating whether or not the new element got inserted. Set contains ordered elements.\
 \
 multiset : Multisets are containers that store elements following a specific order, and where multiple elements can have equivalent values.\
-The value of the elements in a set/multiset cannot  be modified once in the container (the elements are always const), but they can be inserted or removed from the container.\
+The value of the elements in a set/multiset cannot  be modified once in the container (
+\b the elements are always const
+\b0 ), but they can be inserted or removed from the container.\
 \
 86. Internal implementation of MAP : The ordered containers, including std::map are implemented as balanced binary trees (usually RB trees, but any other balanced tree would fit the requirements). A red\'96black tree is a data structure which is a type of self-balancing binary search tree. In computer science, a self-balancing (or height-balanced) binary search tree is any node-based binary search tree that automatically keeps its height (maximal number of levels below the root) small in the face of arbitrary item insertions and deletions.\
 \
-87. Internal implementation of VECTOR\
+87.A Internal implementation of VECTOR\
 std::vector, as the name itself suggests, is implemented with a normal dynamically-allocated array, that is reallocated when its capacity is exhausted (usually doubling its size or something like that).\
 \
 Vector is implemented as a dynamically allocated array. The memory for this array is allocated in the constructor. As more elements are inserted the array is dynamically increased in size. A constructor without parameter creates an array with a default size. Another constructor with integer parameter creates an array of the specified size. The destructor deletes the memory allocated for the array. [Check Program.txt for code]\
+\
+87.B How to find item in vector\
+if your vector is not ordered, use the approach\
+std::find(vector.begin(), vector.end(), item)!=vector.end()\
+\
+If your vector is ordered, use binary_search method\
+if(binary_search(vector.begin(), vector.end(), item))\
 \
 88.  Internal implementation of LIST\
 std::list instead is (usually1) implemented with a doubly-linked list.\
@@ -1403,7 +1416,7 @@ Inorder to avoid such misalignment, compiler will introduce alignment requiremen
 In structc_t of the above program, there will be padding of 4 bytes after int member to make the structure size multiple of its alignment. Thus the sizeof (structc_t) is 24 bytes.\'a0It guarantees correct alignment even in arrays. You can cross check.\
 \
 structure D \'96\'a0How to Reduce Padding?\
-By now, it may be clear that padding is unavoidable. There is a way to minimize padding. The programmer should declare the structure members in their increasing/decreasing order of size. An example is structd_t given in our code, whose size is 16 bytes in lieu of 24 bytes of structc_t.\
+By now, it may be clear that padding is unavoidable. There is a way to minimize padding. The programmer should declare the structure members in their increasing ? /decreasing order of size. An example is structd_t given in our code, whose size is 16 bytes in lieu of 24 bytes of structc_t.\
 \
 \
 
@@ -1499,8 +1512,9 @@ Test t3 = t1;\'a0 // calls copy constructor, same as "Test t3(t1);"\cell \lastro
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f1\fs24 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\b\fs16 97. Object Slicing
+\f0\b\fs16 \cf0 97. Object Slicing
 \b0 \
 In C++, a derived class object can be assigned to a base class object, but the other way is not possible.\
 
@@ -1523,8 +1537,7 @@ int main() \
 \}\cell \lastrow\row
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0 Object slicing happens when a derived class object is assigned to a base class object, additional attributes of a derived class object are sliced off to form the base class object.\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
-\cf0 \
+\
 ? WinDebug\
 ? interOp\
 ? .NET Concept\
