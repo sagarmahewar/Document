@@ -1,3 +1,779 @@
+IOverview :
+
+==> C# was developed by Anders Hejlsberg and his team during the development of .Net Framework.
+==> C# is designed for Common Language Infrastructure (CLI), which consists of the executable code and runtime environment that allows use of various high-level languages on different computer platforms and architectures.
+
+==> Following is the list of few important features of C#:
+
+	Boolean Conditions
+	Automatic Garbage Collection
+	Standard Library
+	Assembly Versioning
+	Properties and Events
+	Delegates and Events Management
+	Easy-to-use Generics
+	Indexers
+	Conditional Compilation
+	Simple Multithreading
+	LINQ and Lambda Expressions
+	Integration with Windows
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+The .Net Framework :
+
+The .Net framework is a revolutionary platform that helps you to write the following types of applications:
+
+	Windows applications
+	Web applications
+	Web services
+
+The .Net framework applications are multi-platform applications. The framework has been designed in such a way that it can be used from any of the following languages: C#, C++, Visual Basic, Jscript, COBOL, etc. All these languages can access the framework as well as communicate with each other.
+
+The .Net framework consists of an enormous library of codes used by the client languages such as C#. Following are some of the components of the .Net framework:
+
+	Common Language Runtime (CLR)
+	The .Net Framework Class Library
+	Common Language Specification
+	Common Type System
+	Metadata and Assemblies
+	Windows Forms
+	ASP.Net and ASP.Net AJAX
+	ADO.Net
+	Windows Workflow Foundation (WF)
+	Windows Presentation Foundation
+	Windows Communication Foundation (WCF)
+	LINQ
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+Integrated Development Environment (IDE) for C# :
+
+Microsoft provides the following development tools for C# programming
+
+	Visual Studio 2010 (VS)
+	Visual C# 2010 Express (VCE)
+	Visual Web Developer
+
+The last two are freely available from Microsoft official website. Using these tools, you can write all kinds of C# programs from simple command-line applications to more complex applications. You can also write C# source code files using a basic text editor, like Notepad, and compile the code into assemblies using the command-line compiler, which is again a part of the .NET Framework.
+
+Visual C# Express and Visual Web Developer Express edition are trimmed down versions of Visual Studio and has the same appearance. They retain most features of Visual Studio.
+
+
+
+Writing C# Programs on Linux or Mac OS :
+
+Although the.NET Framework runs on the Windows operating system, there are some alternative versions that work on other operating systems. Mono is an open-source version of the .NET Framework which includes a C# compiler and runs on several operating systems, including various flavors of Linux and Mac OS. Kindly check Go Mono.
+
+The stated purpose of Mono is not only to be able to run Microsoft .NET applications cross-platform, but also to bring better development tools for Linux developers. Mono can be run on many operating systems including Android, BSD, iOS, Linux, OS X, Windows, Solaris, and UNIX.
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+Creating Hello World Program :
+
+A C# program consists of the following parts:
+
+	Namespace declaration
+	A class
+	Class methods
+	Class attributes
+	A Main method
+	Statements and Expressions
+	Comments
+
+Let us look at a simple code that prints the words "Hello World":
+
+using System;
+namespace HelloWorldApplication
+{
+   class HelloWorld
+   {
+      static void Main(string[] args)
+      {
+         /* my first program in C# */
+         Console.WriteLine("Hello World");
+         Console.ReadKey();
+      }
+   }
+}
+
+Let us look at the various parts of the given program:
+
+==> The first line of the program using System; - the using keyword is used to include the System namespace in the program. A program generally has multiple using statements.
+==> The next line has the namespace declaration. A namespace is a collection of classes. The HelloWorldApplication namespace contains the class HelloWorld.
+==> The next line has a class declaration, the class HelloWorld contains the data and method definitions that your program uses. Classes generally contain multiple methods. Methods define the behavior of the class. However, the HelloWorld class has only one method Main.
+==> The next line defines the Main method, which is the entry point for all C# programs. The Main method states what the class does when executed.
+==> The next line /*...*/ is ignored by the compiler and it is put to add comments in the program.
+==> The Main method specifies its behavior with the statement Console.WriteLine("Hello World");
+
+Why should main be static in class
+You need an entry point into your program. Static means that you can call the function without having to instantiate an object/instance of a class. Its a bit "chicken and egg"... you can't instantiate an object before you're inside the program.
+
+WriteLine is a method of the Console class defined in the System namespace. This statement causes the message "Hello, World!" to be displayed on the screen.
+
+==> The last line Console.ReadKey(); is for the VS.NET Users. This makes the program wait for a key press and it prevents the screen from running and closing quickly when the program is launched from Visual Studio .NET.
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+It is worth to note the following points:
+
+==> C# is case sensitive.
+==> All statements and expression must end with a semicolon (;).
+==> The program execution starts at the Main method.
+==> Unlike Java, program file name could be different from the class name.
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+Compiling and Executing the Program
+
+If you are using Visual Studio.Net for compiling and executing C# programs, take the following steps:
+
+==> Start Visual Studio.
+==> On the menu bar, choose File -> New -> Project.
+==> Choose Visual C# from templates, and then choose Windows.
+==> Choose Console Application.
+==> Specify a name for your project and click OK button.
+==> This creates a new project in Solution Explorer.
+==> Write code in the Code Editor.
+==> Click the Run button or press F5 key to execute the project. A Command Prompt window appears that contains the line Hello World.
+==> You can compile a C# program by using the command-line instead of the Visual Studio IDE:
+==> Open a text editor and add the above-mentioned code.
+==> Save the file as helloworld.cs
+==> Open the command prompt tool and go to the directory where you saved the file.
+==> Type csc helloworld.cs and press enter to compile your code.
+==> If there are no errors in your code, the command prompt takes you to the next line and generates helloworld.exe executable file.
+==> Type helloworld to execute your program.
+
+You can see the output Hello World printed on the screen.
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+C# Keywords
+Keywords are reserved words predefined to the C# compiler. These keywords cannot be used as identifiers. However, if you want to use these keywords as identifiers, you may prefix the keyword with the @ character.
+
+In C#, some identifiers have special meaning in context of code, such as get and set are called contextual keywords.
+
+The following table lists the reserved keywords and contextual keywords in C#:
+
+The following table lists the reserved keywords and contextual keywords in C#:
+
+Reserved Keywords ==>
+
+abstract	as		base		bool		break		byte		case
+catch		char		checked		class		const		continue	decimal
+default		delegate	do		double		else		enum		event
+explicit	extern		false		finally		fixed		float		for
+foreach		goto		if		implicit	in		in (generic modifier)		int
+interface	internal	is		lock		long		namespace	new
+null		object		operator	out		out (generic modifier)		override	params
+private		protected	public		readonly	ref		return		sbyte
+sealed		short		sizeof		stackalloc	static		string		struct
+switch		this		throw		true		try		typeof		uint
+ulong		unchecked	unsafe		ushort		using		virtual		void
+volatile	while					
+
+Contextual Keywords ==>
+
+add		alias		ascending	descending	dynamic		from		get
+global		group		into		join		let		orderby		partial (type)
+partial(method)	remove		select		set			
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+C# - Data Types : The varibles in C#, are categorized into the following types:
+
+	Value types
+	Reference types
+	Pointer types
+
+==> Value Type
+Value type variables can be assigned a value directly. 
+They are derived from the class System.ValueType.
+The value types directly contain data. 
+Some examples are int, char, and float, which stores numbers, alphabets, and floating point numbers, respectively. 
+
+==> Reference Type
+The reference types do not contain the actual data stored in a variable, but they contain a reference to the variables.
+In other words, they refer to a memory location. Using multiple variables, the reference types can refer to a memory location. If the data in the memory location is changed by one of the variables, the other variable automatically reflects this change in value. Example of built-in reference types are: 
+
+	1] object
+	2] dynamic
+	3] string
+
+
+1] Object Type :
+The Object Type is the ultimate base class for all data types in C# Common Type System (CTS). Object is an alias for System.Object class. The object types can be assigned values of any other types, value types, reference types, predefined or user-defined types. However, before assigning values, it needs type conversion.When a value type is converted to object type, it is called boxing and on the other hand, when an object type is converted to a value type, it is called unboxing.
+
+	object obj;
+	obj = 100; // this is boxing
+
+
+2] Dynamic Type :
+You can store any type of value in the dynamic data type variable. Type checking for these types of variables takes place at run-time.
+
+Syntax for declaring a dynamic type is :dynamic <variable_name> = value;
+For example : dynamic d = 20;
+
+Dynamic types are similar to object types except that type checking for object type variables takes place at compile time, whereas that for the dynamic type variables takes place at run time.
+
+
+3] String Type :
+The String Type allows you to assign any string values to a variable. The string type is an alias for the System.String class. It is derived from object type. The value for a string type can be assigned using string literals in two forms: quoted and @quoted.
+
+For example,
+
+String str = "Tutorials Point";
+A @quoted string literal looks as follows:
+
+@"Tutorials Point";
+The user-defined reference types are: class, interface, or delegate. We will discuss these types in later chapter.
+
+
+==> Pointer Type
+Pointer type variables store the memory address of another type. Pointers in C# have the same capabilities as the pointers in C or C++.
+
+Syntax for declaring a pointer type is:
+type* identifier;
+
+For example,
+char* cptr;
+int* iptr;
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+Encapsulation is implemented by using access specifiers. An access specifier defines the scope and visibility of a class member. C# supports the following access specifiers:
+
+Public
+Private
+Protected
+Internal
+Protected internal
+
+internal is for assembly scope (i.e. only accessible from code in the same .exe or .dll)
+
+private is for class scope (i.e. accessible only from code in the same class).
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+Sealed : Can not be inherited
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+Passing Parameters to a Method
+When method with parameters is called, you need to pass the parameters to the method. There are three ways that parameters can be passed to a method:
+
+Mechanism		Description
+Value parameters	This method copies the actual value of an argument into the formal parameter of the function. In this case, changes made to the parameter inside the function 			have no effect on the argument.
+Reference parameters	This method copies the reference to the memory location of an argument into the formal parameter. This means that changes made to the parameter affect the 			argument.
+Output parameters	This method helps in returning more than one value.
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+Nullable Types :
+
+C# provides a special data types, the nullable types, to which you can assign normal range of values as well as null values.
+
+For example, you can store any value from -2,147,483,648 to 2,147,483,647 or null in a Nullable<Int32> variable. Similarly, you can assign true, false, or null in a Nullable<bool> variable. Syntax for declaring a nullable type is as follows:
+
+< data_type> ? <variable_name> = null;
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+Declaring Arrays :
+
+To declare an array in C#, you can use the following syntax:
+datatype[] arrayName;
+
+You can assign values to individual array elements, by using the index number, like:
+double[] balance = new double[10];
+balance[0] = 4500.0;
+
+You can assign values to the array at the time of declaration, as shown:
+double[] balance = { 2340.0, 4523.69, 3421.0};
+
+You can also create and initialize an array, as shown:
+int [] marks = new int[5]  { 99,  98, 92, 97, 95};
+
+You may also omit the size of the array, as shown:
+int [] marks = new int[]  { 99,  98, 92, 97, 95};
+
+You can copy an array variable into another target array variable. In such case, both the target and source point to the same memory location:
+int [] marks = new int[]  { 99,  98, 92, 97, 95};
+int[] score = marks;
+
+When you create an array, C# compiler implicitly initializes each array element to a default value depending on the array type. For example, for an int array all elements are initialized to 0.
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+Defining a Structure
+
+struct Books
+{
+   public string title;
+   public string author;
+   public string subject;
+   public int book_id;
+};  
+
+Features of C# Structures :
+You have already used a simple structure named Books. Structures in C# are quite different from that in traditional C or C++. The C# structures have the following features:
+
+	1] Structures can have methods, fields, indexers, properties, operator methods, and events.	
+	2] Structures can have defined constructors, but not destructors. However, you cannot define a default constructor for a structure. The default constructor is automatically 	defined and cannot be changed.
+	3] Unlike classes, structures cannot inherit other structures or classes.
+	4] Structures cannot be used as a base for other structures or classes.
+	5] A structure can implement one or more interfaces.
+	6] Structure members cannot be specified as abstract, virtual, or protected.
+	7] When you create a struct object using the New operator, it gets created and the appropriate constructor is called. Unlike classes, structs can be instantiated without 	using the New operator.
+	8] If the New operator is not used, the fields remain unassigned and the object cannot be used until all the fields are initialized.
+
+
+Class versus Structure :
+Classes and Structures have the following basic differences:
+
+	1] classes are reference types and structs are value types
+	2] structures do not support inheritance
+	3] structures cannot have default constructor
+
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+Multiple Inheritance in C# ==>
+C# does not support multiple inheritance. However, you can use interfaces to implement multiple inheritance. The following program demonstrates this:
+
+using System;
+namespace InheritanceApplication
+{
+   class Shape 
+   {
+      public void setWidth(int w)
+      {
+         width = w;
+      }
+      public void setHeight(int h)
+      {
+         height = h;
+      }
+      protected int width;
+      protected int height;
+   }
+
+   // Base class PaintCost
+   public interface PaintCost 
+   {
+      int getCost(int area);
+
+   }
+   
+   // Derived class
+   class Rectangle : Shape, PaintCost
+   {
+      public int getArea()
+      {
+         return (width * height);
+      }
+      public int getCost(int area)
+      {
+         return area * 70;
+      }
+   }
+   class RectangleTester
+   {
+      static void Main(string[] args)
+      {
+         Rectangle Rect = new Rectangle();
+         int area;
+         Rect.setWidth(5);
+         Rect.setHeight(7);
+         area = Rect.getArea();
+         
+         // Print the area of the object.
+         Console.WriteLine("Total area: {0}",  Rect.getArea());
+         Console.WriteLine("Total paint cost: ${0}" , Rect.getCost(area));
+         Console.ReadKey();
+      }
+   }
+}
+
+Output :
+
+Total area: 35
+Total paint cost: $2450
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+Dynamic Polymorphism
+C# allows you to create abstract classes that are used to provide partial class implementation of an interface. Implementation is completed when a derived class inherits from it. Abstract classes contain abstract methods, which are implemented by the derived class. The derived classes have more specialized functionality.
+
+Here are the rules about abstract classes:
+
+	-You cannot create an instance of an abstract class
+	-You cannot declare an abstract method outside an abstract class
+	-When a class is declared sealed, it cannot be inherited, abstract classes cannot be declared sealed.
+
+The following program demonstrates an abstract class:
+
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+Non-Overloadable Operators
+
+=, ., ?:, ->, new, is, sizeof, typeof
+
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+What is assembly in C# :
+
+Assembly is the smallest unit of deployment of a .net application. It can be a dll or an exe.
+There are mainly two types to it:
+
+Private Assembly: The dll or exe which is sole property of one application only. It is generally stored in application root folder
+
+Public/Shared assembly: It is a dll which can be used by multiple applications at a time. A shared assembly is stored in GAC i.e Global Assembly Cache.
+
+GAC is simply C:\Windows\Assembly folder where you can find the public assemblies/dlls of all the softwares installed in your PC.
+
+There is also a third and least known type of an assembly: Satellite Assembly.
+A Satellite Assembly contains only static objects like images and other non-executable files required by the application.
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+Encapsulation is defined 'as the process of enclosing one or more items within a physical or logical package'. Encapsulation, in object oriented programming methodology, prevents access to implementation details.
+
+Abstraction and encapsulation are related features in object oriented programming. Abstraction allows making relevant information visible and encapsulation enables a programmer to implement the desired level of abstraction.
+
+Encapsulation is implemented by using access specifiers. An access specifier defines the scope and visibility of a class member. C# supports the following access specifiers:
+
+	Public
+	Private
+	Protected
+	Internal
+	Protected internal
+
+public :The type or member can be accessed by any other code in the same assembly or another assembly that references it.
+
+private : The type or member can only be accessed by code in the same class or struct.
+
+protected : The type or member can only be accessed by code in the same class or struct, or in a derived class.
+
+internal : The type or member can be accessed by any code in the same assembly, but not from another assembly.
+
+protected internal : The type or member can be accessed by any code in the same assembly, or by any derived class in another assembly.
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+Nullable types can represent all the values of an underlying type, and an additional null value. Nullable types are declared in one of two ways:
+
+	System.Nullable<T> variable
+		-or-
+	T? variable
+
+T is the underlying type of the nullable type. T can be any value type including struct; it cannot be a reference type.
+For an example of when you might use a nullable type, consider how an ordinary Boolean variable can have two values: true and false. There is no value that signifies "undefined". In many programming applications, most notably database interactions, variables can occur in an undefined state. For example, a field in a database may contain the values true or false, but it may also contain no value at all. Similarly, reference types can be set to null to indicate that they are not initialized.
+
+	int? i = 10;
+	double? d1 = 3.14;
+	bool? flag = null;
+	char? letter = 'a';
+	int?[] arr = new int?[10];
+
+Each instance of a nullable type has two public read-only properties:
+HasValue : HasValue is of type bool. It is set to true when the variable contains a non-null value.
+
+Value : Value is of the same type as the underlying type. If HasValue is true, Value contains a meaningful value. If HasValue is false, accessing Value will throw a InvalidOperationException.
+
+
+In this example, the HasValue member is used to test whether the variable contains a value before it tries to display it.
+int? x = 10;
+if (x.HasValue)
+{
+    System.Console.WriteLine(x.Value);
+}
+else
+{
+    System.Console.WriteLine("Undefined");
+}
+
+
+Testing for a value can also be done as in the following example
+int? y = 10;
+if (y != null)
+{
+    System.Console.WriteLine(y.Value);
+}
+else
+{
+    System.Console.WriteLine("Undefined");
+}
+
+
+A nullable type can be cast to a regular type, either explicitly with a cast, or by using the Value property. For example:
+int? n = null;
+//int m1 = n;      // Will not compile. 
+int m2 = (int)n;   // Compiles, but will create an exception if n is null. 
+int m3 = n.Value;  // Compiles, but will create an exception if n is null.
+
+Another important example 
+int? a = 10;
+int? b = null;
+a++;         // Increment by 1, now a is 11.
+a = a * 10;  // Multiply by 10, now a is 110.
+a = a + b;   // Add b, now a is null.
+
+
+When you perform comparisons with nullable types, if the value of one of the nullable types is null and the other is not, all comparisons evaluate to false except for != (not equal). It is important not to assume that because a particular comparison returns false, the opposite case returns true. In the following example, 10 is not greater than, less than, nor equal to null. Only num1 != num2 evaluates to true.
+
+int? num1 = 10;
+int? num2 = null;
+if (num1 >= num2)
+{
+    Console.WriteLine("num1 is greater than or equal to num2");
+}
+else
+{
+    // This clause is selected, but num1 is not less than num2.
+    Console.WriteLine("num1 >= num2 returned false (but num1 < num2 also is false)");
+}
+
+if (num1 < num2)
+{
+    Console.WriteLine("num1 is less than num2");
+}
+else
+{
+    // The else clause is selected again, but num1 is not greater than 
+    // or equal to num2.
+    Console.WriteLine("num1 < num2 returned false (but num1 >= num2 also is false)");
+}
+
+if (num1 != num2)
+{
+    // This comparison is true, num1 and num2 are not equal.
+    Console.WriteLine("Finally, num1 != num2 returns true!");
+}
+
+// Change the value of num1, so that both num1 and num2 are null.
+num1 = null;
+if (num1 == num2)
+{
+    // The equality comparison returns true when both operands are null.
+    Console.WriteLine("num1 == num2 returns true when the value of each is null");
+}
+
+/* Output:
+ * num1 >= num2 returned false (but num1 < num2 also is false)
+ * num1 < num2 returned false (but num1 >= num2 also is false)
+ * Finally, num1 != num2 returns true!
+ * num1 == num2 returns true when the value of each is null
+ */
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+The ?? Operator :
+
+The ?? operator defines a default value that is returned when a nullable type is assigned to a non-nullable type.
+
+int? c = null;
+// d = c, unless c is null, in which case d = -1. 
+int d = c ?? -1;
+
+
+This operator can also be used with multiple nullable types. For example:
+
+int? e = null;
+int? f = null;
+
+// g = e or f, unless e and f are both null, in which case g = -1. 
+int g = e ?? f ?? -1;
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+Assigning Values to an Array :
+
+You can assign values to individual array elements, by using the index number, like:
+
+	double[] balance = new double[10];
+	balance[0] = 4500.0;
+
+You can assign values to the array at the time of declaration, as shown:
+
+	double[] balance = { 2340.0, 4523.69, 3421.0};
+
+You can also create and initialize an array, as shown:
+
+	int [] marks = new int[5]  { 99,  98, 92, 97, 95};
+
+You may also omit the size of the array, as shown:
+
+	int [] marks = new int[]  { 99,  98, 92, 97, 95};
+
+You can copy an array variable into another target array variable. In such case, both the target and source point to the same memory location:
+
+	int [] marks = new int[]  { 99,  98, 92, 97, 95};
+	int[] score = marks;
+
+When you create an array, C# compiler implicitly initializes each array element to a default value depending on the array type. For example, for an int array all elements are initialized to 0.
+
+
+
+There are following few important concepts related to array which should be clear to a C# programmer:
+
+Concept					Description
+Multi-dimensional arrays		C# supports multidimensional arrays. The simplest form of the multidimensional array is the two-dimensional array.
+Jagged arrays				C# supports multidimensional arrays, which are arrays of arrays.
+Passing arrays to functions		You can pass to the function a pointer to an array by specifying the array's name without an index.
+Param arrays				This is used for passing unknown number of parameters to a function.
+The Array Class				Defined in System namespace, it is the base class to all arrays, and provides various properties and methods for working with arrays.
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+Methods of the String Class
+The String class has numerous methods that help you in working with the string objects. The following table provides some of the most commonly used methods:
+
+Sr.No	Methods
+1	public static int Compare(string strA, string strB)
+	Compares two specified string objects and returns an integer that indicates their relative position in the sort order.
+
+2	public static int Compare(string strA, string strB, bool ignoreCase )
+	Compares two specified string objects and returns an integer that indicates their relative position in the sort order. However, it ignores case if the Boolean parameter is 	true.
+
+3	public static string Concat(string str0, string str1)
+	Concatenates two string objects.
+
+4	public static string Concat(string str0, string str1, string str2)
+	Concatenates three string objects.
+
+5	public static string Concat(string str0, string str1, string str2, string str3)
+	Concatenates four string objects.
+
+6	public bool Contains(string value)
+	Returns a value indicating whether the specified String object occurs within this string.
+
+7	public static string Copy(string str)
+	Creates a new String object with the same value as the specified string.
+
+8	public void CopyTo(int sourceIndex, char[] destination, int destinationIndex, int count)
+	Copies a specified number of characters from a specified position of the String object to a specified position in an array of Unicode characters.
+
+9	public bool EndsWith(string value)
+	Determines whether the end of the string object matches the specified string.
+
+10	public bool Equals(string value)
+	Determines whether the current String object and the specified String object have the same value.
+
+11	public static bool Equals(string a, string b)
+	Determines whether two specified String objects have the same value.
+
+12	public static string Format(string format, Object arg0)
+	Replaces one or more format items in a specified string with the string representation of a specified object.
+
+13	public int IndexOf(char value)
+	Returns the zero-based index of the first occurrence of the specified Unicode character in the current string.
+
+14	public int IndexOf(string value)
+	Returns the zero-based index of the first occurrence of the specified string in this instance.
+
+15	public int IndexOf(char value, int startIndex)
+	Returns the zero-based index of the first occurrence of the specified Unicode character in this string, starting search at the specified character position.
+
+16	public int IndexOf(string value, int startIndex)
+	Returns the zero-based index of the first occurrence of the specified string in this instance, starting search at the specified character position.
+
+17	public int IndexOfAny(char[] anyOf)
+	Returns the zero-based index of the first occurrence in this instance of any character in a specified array of Unicode characters.
+
+18	public int IndexOfAny(char[] anyOf, int startIndex)
+	Returns the zero-based index of the first occurrence in this instance of any character in a specified array of Unicode characters, starting search at the specified character 	position.
+
+19	public string Insert(int startIndex, string value)
+	Returns a new string in which a specified string is inserted at a specified index position in the current string object.
+
+20	public static bool IsNullOrEmpty(string value)
+	Indicates whether the specified string is null or an Empty string.
+
+21	public static string Join(string separator, params string[] value)
+	Concatenates all the elements of a string array, using the specified separator between each element.
+
+22	public static string Join(string separator, string[] value, int startIndex, int count)
+	Concatenates the specified elements of a string array, using the specified separator between each element.
+
+23	public int LastIndexOf(char value)
+	Returns the zero-based index position of the last occurrence of the specified Unicode character within the current string object.
+
+24	public int LastIndexOf(string value)
+	Returns the zero-based index position of the last occurrence of a specified string within the current string object.
+
+25	public string Remove(int startIndex)
+	Removes all the characters in the current instance, beginning at a specified position and continuing through the last position, and returns the string.
+
+26	public string Remove(int startIndex, int count)
+	Removes the specified number of characters in the current string beginning at a specified position and returns the string.
+
+27	public string Replace(char oldChar, char newChar)
+	Replaces all occurrences of a specified Unicode character in the current string object with the specified Unicode character and returns the new string.
+
+28	public string Replace(string oldValue, string newValue)
+	Replaces all occurrences of a specified string in the current string object with the specified string and returns the new string.
+
+29	public string[] Split(params char[] separator)
+	Returns a string array that contains the substrings in the current string object, delimited by elements of a specified Unicode character array.
+
+30	public string[] Split(char[] separator, int count)
+	Returns a string array that contains the substrings in the current string object, delimited by elements of a specified Unicode character array. The int parameter specifies 	the maximum number of substrings to return.
+
+31	public bool StartsWith(string value)
+	Determines whether the beginning of this string instance matches the specified string.
+
+32	public char[] ToCharArray()
+	Returns a Unicode character array with all the characters in the current string object.
+
+33	public char[] ToCharArray(int startIndex, int length)
+	Returns a Unicode character array with all the characters in the current string object, starting from the specified index and up to the specified length.
+
+34	public string ToLower()
+	Returns a copy of this string converted to lowercase.
+
+35	public string ToUpper()
+	Returns a copy of this string converted to uppercase.
+
+36	public string Trim()
+	Removes all leading and trailing white-space characters from the current String object.
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+Features of C# Structures
+
+You have already used a simple structure named Books. Structures in C# are quite different from that in traditional C or C++. The C# structures have the following features:
+
+- Structures can have methods, fields, indexers, properties, operator methods, and events.
+
+- Structures can have defined constructors, but not destructors. However, you cannot define a default constructor for a structure. The default constructor is automatically defined and cannot be changed.
+
+- Unlike classes, structures cannot inherit other structures or classes.
+
+- Structures cannot be used as a base for other structures or classes.
+
+- A structure can implement one or more interfaces.
+
+- Structure members cannot be specified as abstract, virtual, or protected.
+
+- When you create a struct object using the New operator, it gets created and the appropriate constructor is called. Unlike classes, structs can be instantiated without using the New operator.
+
+- If the New operator is not used, the fields remain unassigned and the object cannot be used until all the fields are initialized.
+
+
+Class versus Structure :
+
+Classes and Structures have the following basic differences:
+
+- classes are reference types and structs are value types
+
+- structures do not support inheritance
+
+- structures cannot have default constructor
+
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+
+
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+
+
 31. What is Common Language Specification (CLS)?
 ==>CLS is a set of basic rules, which must be followed by each .NET language to be a .NET- compliant language. It enables interoperability between two .NET-compliant languages. CLS is a subset of CTS; therefore, the languages supported by CLS can use each other's class libraries similar to their own. Application programming interfaces (APIs), which are designed by following the rules defined in CLS can be used by all .NET-compliant languages.
 
@@ -105,7 +881,7 @@ stand-alone PE file, that contains only assembly manifest information.
 10. Differentiate between managed and unmanaged code?
 ==>Managed code is the code that is executed directly by the CLR instead of the operating system. The code compiler first compiles the managed code to intermediate language (IL) code, also called as MSIL code. This code doesn't depend on machine configurations and can be executed on different machines.
 
-Unmanaged code is the code that is executed directly by the operating system outside the CLR environment. It is directly compiled to native machine code which depends on the machine configuration.
+Unmanaged code is the code that is executed directly by the operating system outsideide the CLR environment. It is directly compiled to native machine code which depends on the machine configuration.
 In the managed code, since the execution of the code is governed by CLR, the runtime provides different services, such as garbage collection, type checking, exception handling, and security support. These services help provide uniformity in platform and language-independent behavior of managed code applications. In the unmanaged code, the allocation of memory, type safety, and security is required to be taken care of by the developer. If the unmanaged code is not properly handled, it may result in memory leak. Examples of unmanaged code are ActiveX components and Win32 APIs that execute beyond the scope of native CLR.
 
 
@@ -138,3 +914,6 @@ Namespace can span multiple assembly.
 
 15.What is lazy initialization?
 ==>Lazy initialization is a process by which an object is not initialized until it is first called in your code. The .NET 4.0 introduces a new wrapper class, System.Lazy<T>, for executing the lazy initialization in your application. Lazy initialization helps you to reduce the wastage of resources and memory requirements to improve performance. It also supports thread-safety.
+
+16. Shadowing (method hiding)
+A method or function of the base class is available to the child (derived) class without the use of the "overriding" keyword. The compiler hides the function or method of the base class. This concept is known as shadowing or method hiding. In the shadowing or method hiding, the child (derived) class has its own version of the function, the same function is also available in the base class.

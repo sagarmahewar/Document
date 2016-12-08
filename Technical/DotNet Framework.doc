@@ -1,0 +1,248 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 Georgia;\f2\froman\fcharset0 TimesNewRomanPSMT;
+\f3\fnil\fcharset0 Verdana;\f4\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red67\green67\blue67;\red0\green0\blue255;\red0\green0\blue233;
+\red26\green26\blue26;\red252\green252\blue252;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+{\info
+{\keywords cursorLocation=8610}}\vieww25600\viewh14160\viewkind0\viewscale181
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs34 \cf2 \expnd0\expndtw0\kerning0
+1) What are the advantages of .Net?
+\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Good Design\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Object-Oriented Programming \'96 Using C# and .NET which are based on object-oriented Concepts.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Language Independence \'96 All the languages which are supported by .Net (VB.NET, C#, J#, and managed C++) are compiled into common Intermediate Language (IL). So IL makes sure that languages are interoperable.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Efficient Data Access \'96 ADO.NET provides fast and efficient way to access RDBMS, file system etc.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Code Sharing \'96 To share code between applications, a new concept called assembly is introduced. Assemblies supports versioning.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Improved Security\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Support Dynamic Web Pages \'96 Using ASP.NET\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Support for Web Services\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\b \cf2 2) What is .Net Framework ?
+\b0 \
+The .NET framework is a programming framework from Microsoft. Developers can use .Net Framework to develop applications, install and run the application on Windows operating systems.\
+\
+
+\b 3) What is MS-IL (Microsoft Intermediate Language) ?
+\b0 \
+When a program is complied in .Net, the source code will be converted into an intermediate language called Microsoft Intermediate Language (MS-IL). This is done by Just-In time Compiler (JIT). The dot net framework is built in such a way that the code is Just-In time complied, which means that it get complied when it is called rather than compiling entire code at the start up. A portion of the code will get complied only once and it will exist till the application exit. This will have a significant improvement in performance since the entire section of the code won't get executed in most cases.\
+\
+
+\b 4) What is Common Language Runtime (CLR) ?
+\b0 \
+Common Language Runtime or CLR is the run-time execution environment of .Net Framework. Converting MS-IL into platform or OS specific code is done by the CLR. Currently, .Net programs will run only on windows.\
+\
+
+\b 5) What is Common Type System (CTS) ?
+\b0 \
+.Net uses Common Type System (CTS) for Language Interoperability. CTS defines the predefined data types that are available in IL, so that all languages that target the .NET framework will produce the compiled code that is ultimately based on these types. CTS ensures that a data type defined in a VB.net will be understood by C#. For example, VB.Net uses \'93
+\f1 Integer
+\f0 \'94 to define the data type Integer. C# uses \'a0\'93int\'94 to define the data type Integer. When VB.Net code is compiled, it will convert the Integer to Int32. Since C# refers Int to Int32, VB.Net code will be understood by C#.\
+\
+
+\b 6) What is Common Language Specification (CLS) ?
+\f2\fs64 \cf3 \
+
+\f0\b0\fs34 \cf2 Common Language Specification (CLS) is used for Language Interoperability in tandem with CTS to ensure the interoperability of the languages. 
+\i CLS defines a set of minimum standards that all compilers targeting dot net must support
+\i0 . For example, VB.Net is not case sensitive. So attribute \'93EmployeeName\'94 and \'93employeename\'94 is considered same. But C# is case sensitive. So for language interoperability, C# doesn't allow two variables which differ only in case.\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs64 \cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b0\fs32 \cf0 Common Language Specification (CLS) is a set of basic language features that .Net Languages needed to develop Applications and Services , which are compatible with the {\field{\*\fldinst{HYPERLINK "http://vb.net-informations.com/framework/what_is_net_framework.htm"}}{\fldrslt \cf4 \ul \ulc4 .Net Framework}}. When there is a situation to communicate Objects written in different .Net Complaint languages , those objects must expose the features that are common to all the languages . Common Language Specification (CLS) ensures complete interoperability among applications, regardless of the language used to create the application.\
+Common Language Specification (CLS) defines a subset of Common Type System (CTS) . Common Type System (CTS) describes a set of types that can use different .Net languages have in common , which ensure that objects written in different languages can interact with each other. Most of the members defined by types in the .NET Framework Class Library (FCL) are Common Language Specification (CLS) compliant Types. Moreover Common Language Specification (CLS) standardized by ECMA .\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs34 \cf2 7) What is Garbage Collector ?
+\b0 \
+Garbage Collector is used in dot net Framework for memory management. While running an application, applications make a request for memory for its internal use. Framework allocates memory from the heap. Once the process is completed, allocated memory needs to be reclaimed for future use. The process of reclaiming unused memory is taken care by the Garbage Collector.\
+\
+\
+
+\b 8) How to invoke garbage collector programmatically ?
+\b0 \
+To call garbage collector from a program, use code \'93 GC.Collect(); \'93\
+\
+
+\b 9) What is a Managed Code ?
+\b0 \
+Managed code is code that can be executed and managed by .NET Framework Common Language Runtime. All codes based on the intermediate language(EL) executes as managed code.\
+\
+
+\b 10) What is an Assembly ?
+\b0 \
+Assemblies are self-describing logical unit which consists of one or more files targeted at dot net. An assembly can be stored across single file such as a single DLL or EXE that includes metadata, or it can be stored in multiple files. For example, resource files like meta data, DLL's, and an EXE. Assemblies support versioning.\
+\
+
+\b 11) What is Assembly Manifest ?
+\b0 \
+Part of the assembly which contains assembly meta data that describes the assembly itself is known as manifest. Assembly manifest contains Assembly Name, Version Number, Culture, Strong name, List of files inside the assembly and Reference information.\
+\
+
+\b 12) What are the different types of Assembly ?
+\b0 \
+The two types of Assemblies are Shared and Private.\
+\
+
+\b 13) What is a Private Assembly ?
+\b0 \
+Private Assemblies are intended to be used by the program for which it is made for. Reason behind this is that, the application will only load private assemblies that are located in the same folder or in the sub folder of the main executable.\
+\
+
+\b 14) What is Shared Assembly ?
+\b0 \
+Shared Assemblies contain Common Libraries which are intended to be used by multiple applications. While making shared assemblies, name collisions and overwriting existing assemblies need to be taken care. Name Collisions can be taken care by strong name. Global assembly cache can be used to avoid assembly overwriting.\
+\
+
+\b 15) How \'a0to view Assembly information ?
+\b0 \
+By using Ildasm.exe, which is an MSIL Disassembler one can view attributes, references to other modules and assemblies.\
+\
+
+\b 16) Where is the assembly version information stored ?
+\b0 \
+In the Manifest.\
+\
+
+\b 17) What is NameSpace ?
+\b0 \
+A namespace is a logical grouping of related classes and types. Every class should have a NameSpace.\'a0\
+\
+http://a4academics.com/interview-questions/52-dot-net-interview-questions/421-net-interview-questions-and-answers-on-net-framework?showall=&start=2\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b \cf2 18) What is the Difference between NameSpace and Assembly ?
+\b0 \
+
+\b Namespace
+\b0 :\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Forms the logical boundary for a Group of classes.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+It is a Collection of names where each name is Unique.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+The namespace must be specified in Project Properties.\
+\pard\pardeftab720\partightenfactor0
+
+\b \cf2 Assembly
+\b0 :\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Assemblies are Self-Describing\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+It is an Output Unit. It is a unit of deployment and is used for versioning. Assemblies contain MSIL code.\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\b \cf2 19) What is Global Assembly Cache (GAC) ?
+\b0 \
+While using shared assemblies, to avoid Assembly being overwritten by a different version of the same assembly, shared assemblies are placed in a special directory subtree of the file system known as the global assembly cache (GAC). Placing shared assemblies can only be done by a special .Net Utilities.\
+\
+\
+
+\b 20) Explain the concept of strong names ?
+\b0 \
+While using shared assemblies, in order to avoid name collisions strong names are used. Strong Names are based on private key cryptography, ie. private assemblies are simply given the same name as their main file name.\
+\
+
+\b 21) How to add and remove a assembly from GAC?
+\b0 \
+To install assembly in Cache, use \'a0Gacutil. To run Gacutil, goto "Visual Studio Command Prompt" and type "
+\b gacutil -i\'a0<assembly_name>
+\b0 ", where (assembly_name) is the DLL name of the project. To uninstall assembly, type gacutil \'96u <assembly name> in \'a0Visual Studio Command Prompt.\
+
+\b \uc0\u8232 22) What is Reflection?
+\b0 \
+Reflection is used to dynamically load a class, create object and invoke methods at runtime. It can also be used to read its own meta data to find assemblies, modules and type information at runtime.\
+
+\b \uc0\u8232 23) What is Delay signing ?
+\b0 \
+To create a strong named assembly and to make sure that this assembly can used by someone else, we partially build this assembly by providing a Public Key. We write this Public Key in the AssemblyInfo.vb OR .cs file. We also add an attribute by the name\'a0
+\b <Assembly:AssemblyDelaySignAttribute(true)>
+\b0  to the assembly info file. This makes it sure that when we build the assembly, it would be containing the information only about the public key before we deliver it to our clients. This is a partial strong named assembly that we have created, and hence it is called Delayed Assembly.\
+
+\b \uc0\u8232 24) What are the different type of JIT's ?
+\b0 \
+Different Types of JIT are\
+1) Pre-JIT - \'a0Complies complete source code into native code at the time of deployment.\
+2) Econo-JIT \'a0- Complies methods that are called at runtime.\
+3) Normal-JIT - Complies methods that are called at runtime and get stored in cache. Next time when the same method is called, it will be taken from cache.\cf2 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf5 18) What is ADO What are its objects?
+\fs26 \
+\pard\pardeftab720\partightenfactor0
+
+\fs32 \cf5 Microsoft 
+\b ActiveX Data Objects
+\b0  (
+\b ADO
+\b0 ) enable your client applications to access and manipulate data from a variety of sources through an OLE DB provider. Its primary benefits are ease of use, high speed, low memory overhead, and a small disk footprint.\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs34 \cf2 25) What are Value types and Reference types ?
+\b0 \
+There are two types of data types in .Net, Value types and Reference types. Value types are stored in stack part of the memory. Reference type are stored in managed heap. Let have a look at the example for better understanding.\
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs32 \cf2 \cb6 Int iCount = 0; \\\\ Value Type\
+int NewiCount =  iCount; \\\\  Reference Type\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs34 \cf2 \cb1 \
+26) Explain the concept of Boxing and Unboxing ?
+\b0 \
+Converting a value type to reference type is called Boxing. Converting a reference type to value type is called Unboxing.\
+\
+
+\b 27) What\'92s the difference between System exceptions and Application exceptions?
+\b0 \
+System exceptions are common exceptions thrown by the CLR of .Net Framework. Application exceptions can be user defined exceptions thrown by the application.\
+\
+
+\b 28) What is CODE Access security?
+\b0 \
+CODE Access security is a security model that let us grant or deny execution permissions to an assembly according to its "properties," called evidence, such as its strong name or publisher\
+
+\b \uc0\u8232 29) What is a satellite assembly?
+\b0 \
+A satellite assembly are used when multilingual (UI) application are created. Satellite assembly is a compiled library that contains localized resources \'a0which provides us with the capability of designing and deploying solutions to multiple cultures, rather than hard coding texts, bitmaps etc\
+
+\b \uc0\u8232 30) How to prevent my .NET DLL to be decompiled ?
+\b0 \
+We can prevent .NET DLL to be decompiled upto an extent by Obfuscate Source code, asymmetric encryption and encrypted w32 wrapper application.\
+
+\b \uc0\u8232 31) What is Native Image Generator (Ngen.exe) ?
+\b0 \
+Ngen.exe creates compiled processor-specific machine code called native images which are files and installs them into the native image cache on the local computer. The runtime will use native images from the cache rather than using the JIT compiler to compile the original assembly.\
+
+\b \uc0\u8232 32) What is Code Document Object Model (CodeDom) ?
+\b0 \
+Code Document Object Model are code generators which are used \'a0to minimize repetitive coding tasks, and to minimize the number of human-generated source code lines.}{\*\shppict {\pict \jpegblipPageWidth pageWidth = 432.000000}}{\*\shppict {\pict \jpegHeaderFooterString headerStyle = 0, headerPageFormat = 0, headerStartNumber = 0, headerIncludeNumberOnFirstPage = 0, footerStyle = 0, footerPageFormat = 0, footerStartNumber = 0, footerIncludeNumberOnFirstPage = 0,}}
